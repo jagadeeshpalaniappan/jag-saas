@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head'); %>
+
+<body class="app-container">
+  <%- include('../partials/sidenav'); %>
+  <main class="app-main-container">
+    <% if (locals.microAppResp) { %>
+    <%- locals.microAppResp%>
+    <% } else { %>
+    <h1>MicroApp: Not Found</h1>
+    <% } %>
+  </main>
+</body>
+
+</html>

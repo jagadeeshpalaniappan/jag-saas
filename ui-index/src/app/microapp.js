@@ -138,26 +138,29 @@ const options1 = {
   changeOrigin: true,
   proxyTimeout: 5000,
   // pathRewrite: function (path, req) {
-  //   return path.replace("/app1", "/");
+  //   return path.replace("/app1", "");
   // },
   router: getMicroAppUrl,
   selfHandleResponse: true, // selfHandleResponse=true (prevent automatic call of res.end())
   onProxyRes: onProxyRes,
+  logLevel: "debug",
 };
 
 const options2 = {
   changeOrigin: true,
   proxyTimeout: 5000,
   // pathRewrite: function (path, req) {
-  //   return path.replace("/app1", "/");
+  //   return path.replace("/app1", "");
   // },
   router: getMicroAppUrl,
+  logLevel: "debug",
 };
 
 const apiProxyOpts = {
   changeOrigin: true,
   proxyTimeout: 5000,
   router: getApiUrl,
+  logLevel: "debug",
 };
 
 module.exports = {

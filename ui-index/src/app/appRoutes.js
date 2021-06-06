@@ -1,5 +1,9 @@
 const express = require("express");
 const {
+  createProxyMiddleware,
+  responseInterceptor,
+} = require("http-proxy-middleware");
+const {
   validateMicroApp,
   microAppHtmlProxy,
   microAppFilesProxy,
@@ -25,14 +29,40 @@ router.get("/404", function (req, res) {
 router.get("/api/:apiId", apiProxy);
 router.get("/api/:apiId/**", apiProxy);
 
-// proxy: MicroApps
-router.get("/:appId", validateMicroApp, microAppHtmlProxy);
-// proxy: MicroApps (Static Files)
-router.get("/:appId/**", validateMicroApp, microAppFilesProxy);
+router.use(
+  "/app1/**",
+  createProxyMiddleware({
+    target: "http://localhost:3000",
+    changeOrigin: true,
+    logLevel: "debug",
+    pathRewrite: function (path, req) {
+      return path.replace("/app1/", "/");
+    },
+  })
+);
+
+// // proxy: MicroApps
+// router.get("/:appId", validateMicroApp, microAppHtmlProxy);
+// // proxy: MicroApps (Static Files)
+// router.get("/:appId/**", validateMicroApp, microAppFilesProxy);
+
+// // proxy: MicroApps
+// router.get("/:appId", validateMicroApp, microAppHtmlProxy);
+// // proxy: MicroApps (Static Files)
+// router.get("/:appId/**", validateMicroApp, microAppFilesProxy);
+
+// router.use(
+//   "/app1",
+//   createProxyMiddleware({
+//     target: "http://localhost:3000",
+//     changeOrigin: true,
+//     logLevel: "debug",
+//   })
+// );
 
 // index page
-router.get("/", function (req, res) {
-  res.render("pages/index", { title: "Home" });
-});
+// router.get("/", function (req, res) {
+//   res.render("pages/index", { title: "Home" });
+// });
 
 module.exports = router;

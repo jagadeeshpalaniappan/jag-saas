@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "author": "Jagadeesh Palaniappan",
+  "homepage":".",
   "dependencies": {
     "axios": "^0.21.1",
     "bootstrap": "^5.0.0",

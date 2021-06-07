@@ -23,8 +23,8 @@ router.get("/404", function (req, res) {
 });
 
 // proxy: api
+// router.get("/api/:apiId/**", proxyApi());
 router.get("/api/:apiId", proxyApi());
-router.get("/api/:apiId/**", proxyApi());
 
 // proxy: MicroApps
 

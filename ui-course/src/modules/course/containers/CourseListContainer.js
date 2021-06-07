@@ -64,7 +64,7 @@ function CourseListContainer() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [axioSrc, setAxioSrc] = useState(null);
-  const [value, setVal] = useState(null);
+  const [value] = useState(null);
 
   const onChange = (keyword) => {
     console.log({ keyword });

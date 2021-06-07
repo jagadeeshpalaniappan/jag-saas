@@ -4,18 +4,21 @@ const {
 } = require("http-proxy-middleware");
 const zlib = require("zlib");
 
+const isLocal = true;
+
 const navs = [
-  { title: "App1", appId: "app1" },
-  { title: "App2", appId: "app2" },
+  { title: "Course", appId: "course" },
+  { title: "Student", appId: "student" },
   { title: "App3", appId: "app3" },
 ];
 
 const microAppRouteMap = {
-  app1: "http://localhost:3000",
+  course: "http://localhost:4001",
+  student: "http://localhost:4002",
 };
 
 const apiRouteMap = {
-  courses: "http://localhost:8080",
+  courses: "http://localhost:5001",
 };
 
 const getMicroAppUrl = function (req) {
@@ -157,6 +160,7 @@ const proxyMicroApp = () => {
   const pathRewrite = (path, req) => path.replace(`/${req.params.appId}`, "/");
   return createProxyMiddleware({
     target: "http://localhost:3000",
+    router: getMicroAppUrl,
     changeOrigin: true,
     logLevel: "debug",
     onProxyReq,
@@ -172,13 +176,18 @@ const proxyMicroAppFiles = () => {
     console.log("###proxyMicroAppFiles:onProxyReq####", fullUrl);
   };
 
-  const pathRewrite = (path, req) => path.replace(`/${req.params.appId}`, `/`);
+  const pathRewrite = (path, req) => {
+    const rewritePath = isLocal ? `/${req.params.appId}` : "/";
+    return path.replace(`/${req.params.appId}`, rewritePath);
+  };
 
   return createProxyMiddleware({
     target: "http://localhost:3000",
+    router: getMicroAppUrl,
     changeOrigin: true,
     logLevel: "debug",
     onProxyReq,
+    router: getMicroAppUrl,
     pathRewrite,
   });
 };

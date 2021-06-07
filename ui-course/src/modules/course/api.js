@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const COURSES_API = "http://localhost:5000/api/courses"; // TODO: read from env variable
+export const COURSES_API = "http://localhost:4000/api/courses"; // TODO: read from env variable
 
 async function getCourses({ keyword, cancelToken }) {
   console.log("api:course:getCourses::start", { keyword, cancelToken });

@@ -64,6 +64,14 @@ const proxyMicroApp = () => {
       console.log(error);
     }
   };
+  const onError = (err, req, res, target) => {
+    res.render("pages/microapp", {
+      microAppResp: null,
+      sideNavs,
+      title: "Microapp: Failed to Load",
+      appId: req.params.appId,
+    });
+  };
   return createProxyMiddleware({
     target: "http://localhost:3000",
     router,
@@ -73,6 +81,7 @@ const proxyMicroApp = () => {
     pathRewrite,
     selfHandleResponse: true, // selfHandleResponse=true (prevent automatic call of res.end())
     onProxyRes,
+    onError,
   });
 };
 

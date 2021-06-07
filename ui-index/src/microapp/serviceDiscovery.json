@@ -1,0 +1,17 @@
+{
+  "microApp": {
+    "course": {
+      "url": "http://localhost:4001",
+      "local": true
+    },
+    "student": {
+      "url": "http://localhost:4002",
+      "local": true
+    }
+  },
+  "api": {
+    "courses": {
+      "url": "http://localhost:5001"
+    }
+  }
+}

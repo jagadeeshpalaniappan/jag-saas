@@ -5,7 +5,7 @@ const {
   proxyMicroApp,
   proxyMicroAppFiles,
   proxyApi,
-} = require("./microapp");
+} = require("../microapp");
 
 const router = express.Router();
 

@@ -3,48 +3,20 @@ const {
   responseInterceptor,
 } = require("http-proxy-middleware");
 const zlib = require("zlib");
-
-const isLocal = true;
-
-const navs = [
-  { title: "Course", appId: "course" },
-  { title: "Student", appId: "student" },
-  { title: "App3", appId: "app3" },
-];
-
-const microAppRouteMap = {
-  course: "http://localhost:4001",
-  student: "http://localhost:4002",
-};
-
-const apiRouteMap = {
-  courses: "http://localhost:5001",
-};
-
-const getMicroAppUrl = function (req) {
-  console.log("getMicroAppUrl: appId:", req.params.appId);
-  return microAppRouteMap[req.params.appId];
-};
-
-const getApiUrl = function (req) {
-  console.log("getApiUrl: apiId:", req.params.apiId);
-  return apiRouteMap[req.params.apiId];
-};
+const serviceDiscovery = require("./serviceDiscovery");
+const sideNavs = require("./sideNavs");
 
 const validateMicroApp = function (req, res, next) {
-  const microAppUrl = getMicroAppUrl(req);
-  console.log("validateMicroApp: ", {
-    microAppUrl,
-    originalUrl: req.originalUrl,
-  });
-  if (microAppUrl) {
+  const config = serviceDiscovery.microApp[req.params.appId];
+  console.log("validateMicroApp: ", config);
+  if (config && config.url) {
     console.log("Microapp: Found: ", req.params.appId);
     next();
   } else {
     console.log("Microapp: Not Found: ", req.params.appId);
     res.render("pages/microapp", {
       microAppResp: null,
-      navs,
+      sideNavs,
       title: "Microapp: Not Found",
       appId: req.params.appId,
     });
@@ -63,7 +35,7 @@ const onProxyRes1 = (proxyRes, req, res) => {
     console.log(microAppResp);
     res.render("pages/microapp", {
       microAppResp,
-      navs,
+      sideNavs,
       title: "Microapp: " + req.params.appId,
       appId: req.params.appId,
     });
@@ -133,7 +105,7 @@ function onProxyRes(proxyRes, req, res) {
     console.log("###end####");
     res.render("pages/microapp", {
       microAppResp,
-      navs,
+      sideNavs,
       appId: req.params.appId,
       title: "Microapp: " + req.params.appId,
     });
@@ -144,15 +116,25 @@ function onProxyRes(proxyRes, req, res) {
 }
 
 const proxyApi = () => {
+  const router = (req) => {
+    const config = serviceDiscovery.api[req.params.apiId];
+    console.log("proxyApi: router:", config);
+    return config.url;
+  };
   return createProxyMiddleware({
     changeOrigin: true,
     proxyTimeout: 5000,
-    router: getApiUrl,
+    router,
     logLevel: "debug",
   });
 };
 
 const proxyMicroApp = () => {
+  const router = (req) => {
+    const config = serviceDiscovery.microApp[req.params.appId];
+    console.log("proxyApi: router:", config);
+    return config.url;
+  };
   const onProxyReq = (proxyRes, req, res) => {
     var fullUrl = req.protocol + "://" + req.get("host") + req.originalUrl;
     console.log("###proxyMicroApp:onProxyReq####", fullUrl);
@@ -160,7 +142,7 @@ const proxyMicroApp = () => {
   const pathRewrite = (path, req) => path.replace(`/${req.params.appId}`, "/");
   return createProxyMiddleware({
     target: "http://localhost:3000",
-    router: getMicroAppUrl,
+    router,
     changeOrigin: true,
     logLevel: "debug",
     onProxyReq,
@@ -171,23 +153,29 @@ const proxyMicroApp = () => {
 };
 
 const proxyMicroAppFiles = () => {
+  const router = (req) => {
+    const config = serviceDiscovery.microApp[req.params.appId];
+    console.log("proxyApi: router:", config);
+    return config.url;
+  };
   const onProxyReq = (proxyRes, req, res) => {
     var fullUrl = req.protocol + "://" + req.get("host") + req.originalUrl;
     console.log("###proxyMicroAppFiles:onProxyReq####", fullUrl);
   };
 
   const pathRewrite = (path, req) => {
-    const rewritePath = isLocal ? `/${req.params.appId}` : "/";
+    const config = serviceDiscovery.microApp[req.params.appId];
+    const rewritePath = config.local ? `/${req.params.appId}` : "/";
     return path.replace(`/${req.params.appId}`, rewritePath);
   };
 
   return createProxyMiddleware({
     target: "http://localhost:3000",
-    router: getMicroAppUrl,
+    router,
     changeOrigin: true,
     logLevel: "debug",
     onProxyReq,
-    router: getMicroAppUrl,
+    router,
     pathRewrite,
   });
 };

@@ -1,0 +1,5 @@
+[
+  { "title": "Course", "appId": "course" },
+  { "title": "Student", "appId": "student" },
+  { "title": "App3", "appId": "app3" }
+]

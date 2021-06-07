@@ -34,8 +34,11 @@ const validateMicroApp = function (req, res, next) {
     microAppUrl,
     originalUrl: req.originalUrl,
   });
-  if (microAppUrl) next();
-  else {
+  if (microAppUrl) {
+    console.log("Microapp: Found: ", req.params.appId);
+    next();
+  } else {
+    console.log("Microapp: Not Found: ", req.params.appId);
     res.render("pages/microapp", {
       microAppResp: null,
       navs,
@@ -120,8 +123,9 @@ function onProxyRes(proxyRes, req, res) {
   _proxyRes.on("end", () => {
     const responseBuffer = Buffer.from(buffer);
     const microAppResp = responseBuffer.toString("utf8");
+    console.log("###resp####");
+    // console.log(microAppResp);
     console.log("###end####");
-    console.log(microAppResp);
     res.render("pages/microapp", {
       microAppResp,
       navs,
@@ -133,59 +137,50 @@ function onProxyRes(proxyRes, req, res) {
   });
 }
 
-const options1 = {
-  // target: POSTS_API,
-  changeOrigin: true,
-  proxyTimeout: 5000,
-  // pathRewrite: function (path, req) {
-  //   return path.replace("/app1", "");
-  // },
-  router: getMicroAppUrl,
-  selfHandleResponse: true, // selfHandleResponse=true (prevent automatic call of res.end())
-  onProxyRes: onProxyRes,
-  logLevel: "debug",
+const proxyApi = () => {
+  return createProxyMiddleware({
+    changeOrigin: true,
+    proxyTimeout: 5000,
+    router: getApiUrl,
+    logLevel: "debug",
+  });
 };
 
-const options2 = {
-  changeOrigin: true,
-  proxyTimeout: 5000,
-  // pathRewrite: function (path, req) {
-  //   return path.replace("/app1", "");
-  // },
-  router: getMicroAppUrl,
-  logLevel: "debug",
+const proxyMicroApp = () => {
+  const onProxyReq = (proxyRes, req, res) => {
+    var fullUrl = req.protocol + "://" + req.get("host") + req.originalUrl;
+    console.log("###proxyMicroApp:onProxyReq####", fullUrl);
+  };
+  const pathRewrite = (path, req) => path.replace(`/${req.params.appId}`, "/");
+  return createProxyMiddleware({
+    target: "http://localhost:3000",
+    changeOrigin: true,
+    logLevel: "debug",
+    onProxyReq,
+    pathRewrite,
+    selfHandleResponse: true, // selfHandleResponse=true (prevent automatic call of res.end())
+    onProxyRes,
+  });
 };
 
-const apiProxyOpts = {
-  changeOrigin: true,
-  proxyTimeout: 5000,
-  router: getApiUrl,
-  logLevel: "debug",
-};
-
-// working
-const proxyMicroAppOpts = {
-  target: "http://localhost:3000",
-  changeOrigin: true,
-  logLevel: "debug",
-  pathRewrite: function (path, req) {
-    return path.replace("/app1/", "/");
-  },
-};
-
-// working
-const proxyMicroAppFilesOpts = {
-  target: "http://localhost:3000",
-  changeOrigin: true,
-  logLevel: "debug",
-  pathRewrite: function (path, req) {
-    return path.replace("/app1/", "/");
-  },
+const proxyMicroAppFiles = () => {
+  const onProxyReq = (proxyRes, req, res) => {
+    var fullUrl = req.protocol + "://" + req.get("host") + req.originalUrl;
+    console.log("###proxyMicroAppFiles:onProxyReq####", fullUrl);
+  };
+  const pathRewrite = (path, req) => path.replace(`/${req.params.appId}/`, "/");
+  return createProxyMiddleware({
+    target: "http://localhost:3000",
+    changeOrigin: true,
+    logLevel: "debug",
+    // onProxyReq,
+    pathRewrite,
+  });
 };
 
 module.exports = {
   validateMicroApp,
-  proxyMicroApp: createProxyMiddleware(proxyMicroAppOpts),
-  proxyMicroAppFiles: createProxyMiddleware(proxyMicroAppFilesOpts),
-  proxyApi: createProxyMiddleware(apiProxyOpts),
+  proxyMicroApp,
+  proxyMicroAppFiles,
+  proxyApi,
 };

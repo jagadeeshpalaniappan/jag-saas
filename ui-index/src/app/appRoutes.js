@@ -23,12 +23,12 @@ router.get("/404", function (req, res) {
 });
 
 // proxy: api
-router.get("/api/:apiId", proxyApi);
-router.get("/api/:apiId/**", proxyApi);
+router.get("/api/:apiId", proxyApi());
+router.get("/api/:apiId/**", proxyApi());
 
 // proxy: MicroApps
-router.use("/:appId/", validateMicroApp, proxyMicroApp);
-router.use("/:appId/**", validateMicroApp, proxyMicroAppFiles);
+// router.use("/:appId", validateMicroApp, proxyMicroApp());
+router.use("/:appId/**", validateMicroApp, proxyMicroAppFiles());
 
 // // proxy: MicroApps
 // router.get("/:appId", validateMicroApp, microAppHtmlProxy);

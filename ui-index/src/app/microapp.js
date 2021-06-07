@@ -173,8 +173,19 @@ const proxyMicroAppOpts = {
   },
 };
 
+// working
+const proxyMicroAppFilesOpts = {
+  target: "http://localhost:3000",
+  changeOrigin: true,
+  logLevel: "debug",
+  pathRewrite: function (path, req) {
+    return path.replace("/app1/", "/");
+  },
+};
+
 module.exports = {
   validateMicroApp,
   proxyMicroApp: createProxyMiddleware(proxyMicroAppOpts),
+  proxyMicroAppFiles: createProxyMiddleware(proxyMicroAppFilesOpts),
   proxyApi: createProxyMiddleware(apiProxyOpts),
 };

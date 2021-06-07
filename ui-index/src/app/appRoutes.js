@@ -1,6 +1,11 @@
 const express = require("express");
 
-const { validateMicroApp, proxyMicroApp, proxyApi } = require("./microapp");
+const {
+  validateMicroApp,
+  proxyMicroApp,
+  proxyMicroAppFiles,
+  proxyApi,
+} = require("./microapp");
 
 const router = express.Router();
 
@@ -22,7 +27,8 @@ router.get("/api/:apiId", proxyApi);
 router.get("/api/:apiId/**", proxyApi);
 
 // proxy: MicroApps
-router.use("/:appId/**", validateMicroApp, proxyMicroApp);
+router.use("/:appId/", validateMicroApp, proxyMicroApp);
+router.use("/:appId/**", validateMicroApp, proxyMicroAppFiles);
 
 // // proxy: MicroApps
 // router.get("/:appId", validateMicroApp, microAppHtmlProxy);

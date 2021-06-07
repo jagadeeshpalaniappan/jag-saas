@@ -1,14 +1,6 @@
 const express = require("express");
-const {
-  createProxyMiddleware,
-  responseInterceptor,
-} = require("http-proxy-middleware");
-const {
-  validateMicroApp,
-  microAppHtmlProxy,
-  microAppFilesProxy,
-  apiProxy,
-} = require("./microapp");
+
+const { validateMicroApp, proxyMicroApp, proxyApi } = require("./microapp");
 
 const router = express.Router();
 
@@ -26,20 +18,11 @@ router.get("/404", function (req, res) {
 });
 
 // proxy: api
-router.get("/api/:apiId", apiProxy);
-router.get("/api/:apiId/**", apiProxy);
+router.get("/api/:apiId", proxyApi);
+router.get("/api/:apiId/**", proxyApi);
 
-router.use(
-  "/app1/**",
-  createProxyMiddleware({
-    target: "http://localhost:3000",
-    changeOrigin: true,
-    logLevel: "debug",
-    pathRewrite: function (path, req) {
-      return path.replace("/app1/", "/");
-    },
-  })
-);
+// proxy: MicroApps
+router.use("/:appId/**", validateMicroApp, proxyMicroApp);
 
 // // proxy: MicroApps
 // router.get("/:appId", validateMicroApp, microAppHtmlProxy);

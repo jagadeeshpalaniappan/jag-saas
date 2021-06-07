@@ -163,9 +163,18 @@ const apiProxyOpts = {
   logLevel: "debug",
 };
 
+// working
+const proxyMicroAppOpts = {
+  target: "http://localhost:3000",
+  changeOrigin: true,
+  logLevel: "debug",
+  pathRewrite: function (path, req) {
+    return path.replace("/app1/", "/");
+  },
+};
+
 module.exports = {
   validateMicroApp,
-  microAppHtmlProxy: createProxyMiddleware(options1),
-  microAppFilesProxy: createProxyMiddleware(options2),
-  apiProxy: createProxyMiddleware(apiProxyOpts),
+  proxyMicroApp: createProxyMiddleware(proxyMicroAppOpts),
+  proxyApi: createProxyMiddleware(apiProxyOpts),
 };

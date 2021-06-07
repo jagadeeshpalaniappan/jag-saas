@@ -1,7 +1,8 @@
 <nav class="app-nav-container">
     <ul>
         <% navs.forEach(function(nav){ %>
-        <li><a href="<%= nav.url %>"><%= nav.title %></a></li>
+        <li><a href="/<%= nav.appId %>"
+                class="app-nav-item<%= nav.appId === appId ? ' active' : '' %>"><%= nav.title %></a></li>
         <% }); %>
     </ul>
 </nav>

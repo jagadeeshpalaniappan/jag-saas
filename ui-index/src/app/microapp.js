@@ -5,9 +5,9 @@ const {
 const zlib = require("zlib");
 
 const navs = [
-  { title: "App1", url: "/app1" },
-  { title: "App2", url: "/app2" },
-  { title: "App3", url: "/app3" },
+  { title: "App1", appId: "app1" },
+  { title: "App2", appId: "app2" },
+  { title: "App3", appId: "app3" },
 ];
 
 const microAppRouteMap = {
@@ -43,6 +43,7 @@ const validateMicroApp = function (req, res, next) {
       microAppResp: null,
       navs,
       title: "Microapp: Not Found",
+      appId: req.params.appId,
     });
   }
 };
@@ -61,6 +62,7 @@ const onProxyRes1 = (proxyRes, req, res) => {
       microAppResp,
       navs,
       title: "Microapp: " + req.params.appId,
+      appId: req.params.appId,
     });
   });
 };
@@ -129,6 +131,7 @@ function onProxyRes(proxyRes, req, res) {
     res.render("pages/microapp", {
       microAppResp,
       navs,
+      appId: req.params.appId,
       title: "Microapp: " + req.params.appId,
     });
   });
@@ -168,12 +171,14 @@ const proxyMicroAppFiles = () => {
     var fullUrl = req.protocol + "://" + req.get("host") + req.originalUrl;
     console.log("###proxyMicroAppFiles:onProxyReq####", fullUrl);
   };
-  const pathRewrite = (path, req) => path.replace(`/${req.params.appId}/`, "/");
+
+  const pathRewrite = (path, req) => path.replace(`/${req.params.appId}`, `/`);
+
   return createProxyMiddleware({
     target: "http://localhost:3000",
     changeOrigin: true,
     logLevel: "debug",
-    // onProxyReq,
+    onProxyReq,
     pathRewrite,
   });
 };

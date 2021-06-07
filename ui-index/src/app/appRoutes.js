@@ -27,8 +27,9 @@ router.get("/api/:apiId", proxyApi());
 router.get("/api/:apiId/**", proxyApi());
 
 // proxy: MicroApps
-// router.use("/:appId", validateMicroApp, proxyMicroApp());
-router.use("/:appId/**", validateMicroApp, proxyMicroAppFiles());
+
+router.use("/:appId/***", validateMicroApp, proxyMicroAppFiles());
+router.use("/:appId", validateMicroApp, proxyMicroApp());
 
 // // proxy: MicroApps
 // router.get("/:appId", validateMicroApp, microAppHtmlProxy);

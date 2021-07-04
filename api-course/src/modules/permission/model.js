@@ -1,19 +1,22 @@
 const mongoose = require("mongoose");
 
+const AccessSchema = new mongoose.Schema({
+  accessCode: String,
+  isActive: Boolean,
+  startDate: Date,
+  endDate: Date,
+});
+
 /**
  * AccessMapping Schema
  */
 const PermissionSchema = new mongoose.Schema(
   {
-    entityType: String,
-    entityId: String,
     resourceType: String,
     resourceId: String,
-    accountId: String,
-    accessCodes: String,
-    isActive: Boolean,
-    startDate: Date,
-    endDate: Date,
+    accessorType: String,
+    accessorId: String,
+    access: [AccessSchema],
     createdBy: { type: String },
     updatedBy: { type: String },
   },

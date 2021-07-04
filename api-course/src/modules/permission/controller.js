@@ -13,9 +13,29 @@ async function getAll(req, res, next) {
   try {
     const body = req.method === "GET" ? req.query : req.body;
     // POPULATE:
-    const { limit = 10, skip = 0, userIds, userGroupIds } = body;
+    const {
+      limit = 10,
+      skip = 0,
+      accessCode,
+      resourceType,
+      resourceId,
+      userId,
+    } = body;
+    const userGroupIds =
+      req.method === "GET" && req.query.userGroupIds
+        ? req.query.userGroupIds.split(",")
+        : req.body.userGroupIds;
+
     // TX:
-    const courses = await dao.getAll({ limit, skip, userIds, userGroupIds });
+    const courses = await dao.getAll({
+      limit,
+      skip,
+      accessCode,
+      resourceType,
+      resourceId,
+      userId,
+      userGroupIds,
+    });
     // RESP:
     res.json(courses);
   } catch (error) {

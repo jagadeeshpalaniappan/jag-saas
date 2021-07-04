@@ -12,22 +12,38 @@ async function getAll({
   limit,
   skip,
   accessCode,
-  isActive = true,
-  userIds = [],
+  resourceType,
+  resourceId,
+  userId,
   userGroupIds = [],
+  isActive = true,
 }) {
-  const userIdQueries = userIds.map((userId) => ({
-    entityType: "USER",
-    entityId: userId,
-  }));
-  const userGroupIdQueries = userGroupIds.map((userGroupId) => ({
-    entityType: "USER_GROUP",
-    entityId: userGroupId,
-  }));
-  // const $or = [{ _id: objId }, { name: param }, { nickname: param }],
-  const $or = [...userIdQueries, ...userGroupIdQueries];
-  const $and = [{ isActive }];
-  return Permission.find({ $or, $and })
+  // AND:
+  const $and = [];
+  if (accessCode) $and.push({ access: { $elemMatch: { accessCode } } });
+  if (resourceType) $and.push({ resourceType });
+  if (resourceId) $and.push({ resourceId });
+
+  // OR:
+  const $or = [];
+  if (userId) $or.push({ accessorType: "USER", accessorId: userId });
+  if (userGroupIds) {
+    // if user's any of the userGroup have access (consider user have access to the resource)
+    const userGroupIdQueries = userGroupIds.map((userGroupId) => ({
+      accessorType: "USER_GROUP",
+      accessorId: userGroupId,
+    }));
+    $or.push(...userGroupIdQueries);
+  }
+
+  // QUERY:
+  const query = {};
+  if ($and && $and.length > 0) query.$and = $and;
+  if ($or && $or.length > 0) query.$or = $or;
+
+  // const query = { access: { $elemMatch: { accessCode } } };
+  console.log(JSON.stringify(query));
+  return Permission.find(query)
     .sort({ createdAt: -1 })
     .skip(+skip)
     .limit(+limit)
@@ -49,12 +65,7 @@ async function createOne(obj) {
 
 async function create(permissions) {
   try {
-    // POPULATE:
-    const permissionDocs = permissions.map(
-      (permission) => new Permission(permission)
-    );
-    // TX:
-    const data = await Permission.create(permissionDocs);
+    const data = await Permission.insertMany(permissions);
     return data;
   } catch (error) {
     //duplicate key

@@ -1,0 +1,79 @@
+[
+  {
+    "entityType": "USER_GROUP",
+    "entityResource": "tg",
+    "resourceType": "COURSE",
+    "resourceId": "c4",
+    "accountId": "a1",
+    "accessCodes": "",
+    "status": "TRUE",
+    "startDate": "5/1/21",
+    "endDate": "5/1/22"
+  },
+  {
+    "entityType": "USER",
+    "entityResource": "u3",
+    "resourceType": "COURSE_GROUP",
+    "resourceId": "cg1",
+    "accountId": "a1",
+    "accessCodes": "UPDATE_ACCESS_ONLY_COURSE,",
+    "status": "FALSE",
+    "startDate": "5/1/21",
+    "endDate": "5/1/22"
+  },
+  {
+    "entityType": "USER",
+    "entityResource": "u3",
+    "resourceType": "COURSE_GROUP",
+    "resourceId": "cg1",
+    "accountId": "a1",
+    "accessCodes": "DELETE_ACCESS_ONLY_COURSE,",
+    "status": "TRUE",
+    "startDate": "5/1/21",
+    "endDate": ""
+  },
+  {
+    "entityType": "USER",
+    "entityResource": "u3",
+    "resourceType": "COURSE",
+    "resourceId": "c1",
+    "accountId": "a1",
+    "accessCodes": "UPDATE_ACCESS_ONLY_COURSE",
+    "status": "TRUE",
+    "startDate": "5/1/21",
+    "endDate": "5/1/22"
+  },
+  {
+    "entityType": "USER",
+    "entityResource": "u3",
+    "resourceType": "COURSE",
+    "resourceId": "c1",
+    "accountId": "a1",
+    "accessCodes": "DELETE_ACCESS_ONLY_COURSE,",
+    "status": "TRUE",
+    "startDate": "5/1/21",
+    "endDate": "5/1/22"
+  },
+  {
+    "entityType": "USER",
+    "entityResource": "u3",
+    "resourceType": "COURSE",
+    "resourceId": "c2",
+    "accountId": "a1",
+    "accessCodes": "UPDATE_ACCESS_ONLY_COURSE",
+    "status": "TRUE",
+    "startDate": "5/1/21",
+    "endDate": "5/1/22"
+  },
+  {
+    "entityType": "USER",
+    "entityResource": "u3",
+    "resourceType": "COURSE",
+    "resourceId": "c3",
+    "accountId": "a1",
+    "accessCodes": "DELETE_ACCESS_ONLY_COURSE",
+    "status": "TRUE",
+    "startDate": "5/1/21",
+    "endDate": "5/1/99"
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "name": "api-sys-admin",
+  "version": "1.0.0",
+  "description": "System Admin APIs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest",
+    "test:watch": "jest --watchAll --coverage --verbose --silent --runInBand --env node",
+    "lint": "TODO: configure eslint"
+  },
+  "author": "Jagadeesh Palaniappan",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^9.0.2",
+    "express": "^4.17.1",
+    "express-validation": "1.0.2",
+    "helmet": "^4.6.0",
+    "joi": "10.6.0",
+    "mongoose": "^5.12.8"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3",
+    "mongodb-memory-server": "^6.9.6",
+    "supertest": "^6.1.3"
+  }
+}

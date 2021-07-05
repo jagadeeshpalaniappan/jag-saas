@@ -9,27 +9,32 @@ const dao = require("./dao");
  * @property {number} req.query.limit - Limit number of courses to be returned.
  * @returns {Course[]}
  */
-async function getAll(req, res, next) {
+async function getAccessibleResources(req, res, next) {
   try {
-    const body = req.method === "GET" ? req.query : req.body;
+    let payload = req.body;
+    if (req.method === "GET") {
+      payload = req.query;
+      const userGroupIds = req.query.userGroupIds || "";
+      payload.userGroupIds = userGroupIds.split(",");
+      payload.activeOnly = req.query.activeOnly !== "false";
+    }
     // POPULATE:
     const {
       limit = 10,
       skip = 0,
+      activeOnly,
       accessCode,
       resourceType,
       resourceId,
       userId,
-    } = body;
-    const userGroupIds =
-      req.method === "GET" && req.query.userGroupIds
-        ? req.query.userGroupIds.split(",")
-        : req.body.userGroupIds;
+      userGroupIds,
+    } = payload;
 
     // TX:
-    const courses = await dao.getAll({
+    const courses = await dao.getAccessibleResources({
       limit,
       skip,
+      activeOnly,
       accessCode,
       resourceType,
       resourceId,
@@ -39,6 +44,7 @@ async function getAll(req, res, next) {
     // RESP:
     res.json(courses);
   } catch (error) {
+    console.error(error);
     res
       .status(500)
       .json({ message: "Error ocurred while getting permissions", error });
@@ -69,4 +75,4 @@ async function create(req, res, next) {
   }
 }
 
-module.exports = { getAll, create };
+module.exports = { getAccessibleResources, create };

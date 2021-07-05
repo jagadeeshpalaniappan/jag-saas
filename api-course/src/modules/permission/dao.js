@@ -8,19 +8,28 @@ const MONGO_DUPLICATE_KEY = 11000;
  * @property {number} obj.limit - Limit number of permissions to be returned.
  * @returns {Course[]}
  */
-async function getAll({
+async function getAccessibleResources({
   limit,
   skip,
+  activeOnly,
   accessCode,
   resourceType,
   resourceId,
   userId,
   userGroupIds = [],
-  isActive = true,
 }) {
   // AND:
   const $and = [];
-  if (accessCode) $and.push({ access: { $elemMatch: { accessCode } } });
+  if (activeOnly || accessCode) {
+    const $elemMatch = {};
+    if (activeOnly) {
+      const currDate = new Date();
+      $elemMatch.startDate = { $lte: currDate }; // startDate <= currDate
+      $elemMatch.endDate = { $gte: currDate }; // endDate >= currDate
+    }
+    if (accessCode) $elemMatch.accessCode = accessCode;
+    $and.push({ access: { $elemMatch } });
+  }
   if (resourceType) $and.push({ resourceType });
   if (resourceId) $and.push({ resourceId });
 
@@ -76,4 +85,4 @@ async function create(permissions) {
   }
 }
 
-module.exports = { getAll, create };
+module.exports = { getAccessibleResources, create };

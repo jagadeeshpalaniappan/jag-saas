@@ -5,10 +5,9 @@ const mongoose = require("mongoose");
  */
 const UserSchema = new mongoose.Schema(
   {
-    title: { type: String, required: true },
-    description: String,
-    published: Boolean,
-    authorId: { type: String, required: true },
+    userName: { type: String, required: true, unique: true },
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
     createdBy: { type: String },
     updatedBy: { type: String },
   },

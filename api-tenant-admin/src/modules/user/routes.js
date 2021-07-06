@@ -8,6 +8,7 @@ router
   /** GET /api/users - Get list of users */
   .get(ctrl.getAll)
   /** POST /api/users - Create new user */
-  .post(validate(valdn.createUser), ctrl.create);
+  .post(validate(valdn.create), ctrl.create);
+// .post(ctrl.create);
 
 module.exports = router;

@@ -33,21 +33,20 @@ async function getAll(req, res, next) {
 async function create(req, res, next) {
   try {
     // POPULATE:
-    const { title, description, published, authorId } = req.body;
+    const payload = Array.isArray(req.body) ? req.body : [req.body];
     const createdBy = "TMP-USER1"; // TODO: read loggedIn userId
+    const users = payload.map((user) => ({ ...user, createdBy }));
 
     // TX:
-    const savedUser = await dao.create({
-      title,
-      description,
-      published,
-      authorId,
-      createdBy,
-    });
+    const { data, error } = await dao.create(users);
+    if (error) res.status(500).json({ data, error });
+
     // RESP:
-    res.status(201).json(savedUser);
+    const resBody = Array.isArray(req.body) ? data : data[0];
+    res.status(201).json(resBody);
   } catch (error) {
-    res.status(500).json({ message: "Error ocurred while saving user" });
+    console.error("user:create", error);
+    res.status(500).json({ message: "Error ocurred while saving user", error });
   }
 }
 

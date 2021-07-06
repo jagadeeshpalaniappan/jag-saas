@@ -4,6 +4,7 @@ const helmet = require("helmet");
 const config = require("./config");
 
 const apiRoutes = require("./apiRoutes");
+const error = require("./error");
 
 const app = express();
 
@@ -20,9 +21,7 @@ app.use(cors());
 app.use("/api", apiRoutes);
 
 // handle: error
-app.use((err, req, res, next) => {
-  return res.status(err.status).json(err);
-});
+app.use(error.errorMiddleware);
 
 // init: expressApp
 function init() {

@@ -1,5 +1,5 @@
 const { User } = require("./model");
-const { getDbErr } = require("../app/error");
+const { getDbErr, convertMongoWriteErrors } = require("../common/utils/error");
 const MONGO_DUPLICATE_KEY = 11000;
 /**
  * Get user list.
@@ -34,15 +34,15 @@ async function getAll({ title, limit, skip }) {
  * @property {string} obj.published - The published of user.
  * @returns {Users}
  */
-async function create(users) {
+async function createOne(userDoc) {
   console.log("db:user:start:create");
   try {
-    const data = await User.insertMany(users);
+    const data = await userDoc.save();
     console.log("db:user:end:create");
     return { data };
   } catch (err) {
     console.log("db:user:err:create");
-    const { insertedDocs, writeErrors, errors, _message, ...errObj } = err;
+    const { insertedDocs, errors, writeErrors, _message, ...errObj } = err;
     const error = getDbErr({
       errSrc: "db:user:create",
       errDetails: {
@@ -51,13 +51,36 @@ async function create(users) {
         dbError: errObj,
       },
     });
-    if (err.code === MONGO_DUPLICATE_KEY) {
-      console.log("db:user:err:create:unique-validation");
-      error.errCode = "USER_EXISTS";
-      error.errReason = "User already exists";
-    }
     return { data: insertedDocs, error };
   }
 }
 
-module.exports = { getAll, create };
+/**
+ * Create new user
+ * @property {string} obj.title - The username of title.
+ * @property {string} obj.description - The description of user.
+ * @property {string} obj.published - The published of user.
+ * @returns {Users}
+ */
+async function createMany(users) {
+  console.log("db:user:start:create");
+  try {
+    const data = await User.insertMany(users);
+    console.log("db:user:end:create");
+    return { data };
+  } catch (err) {
+    console.log("db:user:err:create");
+    const { insertedDocs, errors, writeErrors, _message, ...errObj } = err;
+    const error = getDbErr({
+      errSrc: "db:user:create",
+      errDetails: {
+        writeErrors,
+        validationErrors: errors,
+        dbError: errObj,
+      },
+    });
+    return { data: insertedDocs, error };
+  }
+}
+
+module.exports = { getAll, createOne, createMany };

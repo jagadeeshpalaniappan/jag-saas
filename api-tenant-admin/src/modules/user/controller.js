@@ -1,5 +1,6 @@
 const { User } = require("./model");
 const dao = require("./dao");
+const validation = require("./validation");
 
 /**
  * Get user list.
@@ -30,24 +31,71 @@ async function getAll(req, res, next) {
  * @property {string} req.body.authorId - The authorId of user.
  * @returns {User}
  */
-async function create(req, res, next) {
-  try {
-    // POPULATE:
-    const payload = Array.isArray(req.body) ? req.body : [req.body];
-    const createdBy = "TMP-USER1"; // TODO: read loggedIn userId
-    const users = payload.map((user) => ({ ...user, createdBy }));
+async function createOne(req) {
+  // POPULATE:
+  const payload = req.body;
+  payload.createdBy = "TMP-USER1"; // TODO: read loggedIn userId
 
-    // TX:
-    const { data, error } = await dao.create(users);
-    if (error) res.status(500).json({ data, error });
+  // VALIDATE:
+  const { doc, error: validationErr } = await validation.createOne(payload);
+  if (validationErr) return { status: 400, error: validationErr };
 
-    // RESP:
-    const resBody = Array.isArray(req.body) ? data : data[0];
-    res.status(201).json(resBody);
-  } catch (error) {
-    console.error("user:create", error);
-    res.status(500).json({ message: "Error ocurred while saving user", error });
+  // TX:
+  const { data, error: dbErr } = await dao.createOne(doc);
+  if (dbErr) return { status: 500, error: dbErr };
+
+  // RESP:
+  return { status: 201, data };
+}
+
+/**
+ * Create new user
+ * @property {string} req.body.title - The title of user.
+ * @property {string} req.body.description - The description of user.
+ * @property {boolean} req.body.published - The published status of user.
+ * @property {string} req.body.authorId - The authorId of user.
+ * @returns {User}
+ */
+async function createMany(req) {
+  const logKey = req.originalUrl;
+  console.log(`${logKey}:createMany:start`);
+
+  // POPULATE:
+  const payload = req.body;
+  const createdBy = "TMP-USER1"; // TODO: read loggedIn userId
+  const users = payload.map((user) => ({ ...user, createdBy }));
+  const allowPartialSave = !!req.query.allowPartialSave;
+
+  // VALIDATE:
+  const validnRes = await validation.createMany(users, allowPartialSave);
+  if (validnRes.hasErr) {
+    console.log(`${logKey}:createMany:end:validationErr`);
+    return { status: 400, error: validnRes.error };
   }
+
+  // TX:
+  const docs = validnRes.validItems.map(({ doc }) => doc);
+  const { data, error: dbErr } = await dao.createMany(docs);
+  if (dbErr) {
+    console.log(`${logKey}:createMany:end:dbErr`);
+    return { status: 500, error: dbErr };
+  }
+
+  // RESP:
+  console.log(`${logKey}:createMany:end:resp`);
+  return { status: 201, data };
+}
+
+/**
+ * Create new user
+ * @property {string} req.body.title - The title of user.
+ * @property {string} req.body.description - The description of user.
+ * @property {boolean} req.body.published - The published status of user.
+ * @property {string} req.body.authorId - The authorId of user.
+ * @returns {User}
+ */
+function create(req) {
+  return Array.isArray(req.body) ? createMany(req) : createOne(req);
 }
 
 module.exports = { getAll, create };

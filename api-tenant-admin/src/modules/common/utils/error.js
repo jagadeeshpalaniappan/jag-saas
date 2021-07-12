@@ -7,14 +7,11 @@ function getErr({
   errReason = "Something failed, Please try again",
   errDetails,
   errObj,
+  stackTrace,
 }) {
-  console.error(errObj);
   if (errObj && errObj instanceof Error) {
     // enable: stackTrace
-    errDetails.stackTrace = JSON.stringify(
-      errObj,
-      Object.getOwnPropertyNames(errObj)
-    );
+    stackTrace = JSON.stringify(errObj, Object.getOwnPropertyNames(errObj));
   }
   return {
     httpCode,
@@ -22,6 +19,7 @@ function getErr({
     errSrc,
     errReason,
     errDetails,
+    stackTrace,
   };
 }
 
@@ -51,18 +49,42 @@ function getValidationErr({
   errSrc = "API-VALIDATION",
   errReason = "Validation failed",
   errDetails,
-  errObj,
+  errObj = {},
+  validationErrors,
 }) {
   return getErr({
     httpCode,
     errCode,
     errSrc,
     errReason,
+    validationErrors,
     errDetails: {
       validationErrors: errObj.errors,
       ...errDetails,
     },
   });
+}
+
+/*
+{
+    "code": 11000,
+    "index": 0,
+    "errmsg": "E11000 duplicate key error collection: jschool-test-db.users index: userName_1 dup key: { userName: \"x3\" }",
+    "op": {
+        "_id": "60ea4b2f8b414084ce1117f5",
+        "userName": "x3",
+        "firstName": "User1",
+        "lastName": "Tenant Admin",
+        "createdBy": "TMP-USER1",
+        "__v": 0,
+        "createdAt": "2021-07-11T01:36:47.721Z",
+        "updatedAt": "2021-07-11T01:36:47.721Z"
+    }
+}
+*/
+
+function convertMongoWriteErrors(writeErrors) {
+  return writeErrors.map(({ index, code }) => ({ index, code }));
 }
 
 function errorMiddleware(err, req, res, next) {
@@ -82,4 +104,26 @@ function errorMiddleware(err, req, res, next) {
   return res.status(error.httpCode).json({ error });
 }
 
-module.exports = { getErr, getDbErr, getValidationErr, errorMiddleware };
+function handleReqResp(cb) {
+  return async function (req, res, next) {
+    try {
+      console.log(`${req.originalUrl}:try:start`);
+      const { status = 500, data, error } = await cb(req, res, next);
+      if (error) res.status(status).json(error);
+      else res.status(status).json(data);
+    } catch (err) {
+      console.error(`${req.originalUrl}:catch:error`);
+      console.error(err);
+      res.status(500).json({ error: getErr({ errObj: err }) });
+    }
+  };
+}
+
+module.exports = {
+  getErr,
+  getDbErr,
+  getValidationErr,
+  errorMiddleware,
+  convertMongoWriteErrors,
+  handleReqResp,
+};

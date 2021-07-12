@@ -4,7 +4,7 @@ const helmet = require("helmet");
 const config = require("./config");
 
 const apiRoutes = require("./apiRoutes");
-const error = require("./error");
+const error = require("../common/utils/error");
 
 const app = express();
 

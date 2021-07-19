@@ -45,7 +45,7 @@ async function createOne(req) {
   if (dbErr) return { status: 500, error: dbErr };
 
   // RESP:
-  return { status: 201, data };
+  return { status: 201, success: data };
 }
 
 /**
@@ -83,7 +83,7 @@ async function createMany(req) {
 
   // RESP:
   console.log(`${logKey}:createMany:end:resp`);
-  return { status: 201, data };
+  return { status: 201, success: data };
 }
 
 /**

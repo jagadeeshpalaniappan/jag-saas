@@ -104,26 +104,10 @@ function errorMiddleware(err, req, res, next) {
   return res.status(error.httpCode).json({ error });
 }
 
-function handleReqResp(cb) {
-  return async function (req, res, next) {
-    try {
-      console.log(`${req.originalUrl}:try:start`);
-      const { status = 500, data, error } = await cb(req, res, next);
-      if (error) res.status(status).json(error);
-      else res.status(status).json(data);
-    } catch (err) {
-      console.error(`${req.originalUrl}:catch:error`);
-      console.error(err);
-      res.status(500).json({ error: getErr({ errObj: err }) });
-    }
-  };
-}
-
 module.exports = {
   getErr,
   getDbErr,
   getValidationErr,
   errorMiddleware,
   convertMongoWriteErrors,
-  handleReqResp,
 };

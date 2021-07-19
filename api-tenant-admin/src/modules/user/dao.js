@@ -1,5 +1,6 @@
 const { User } = require("./model");
 const { getDbErr, convertMongoWriteErrors } = require("../common/utils/error");
+const { parseMongoValidationErrors } = require("../common/utils/validation");
 const MONGO_DUPLICATE_KEY = 11000;
 /**
  * Get user list.
@@ -71,11 +72,12 @@ async function createMany(users) {
   } catch (err) {
     console.log("db:user:err:create");
     const { insertedDocs, errors, writeErrors, _message, ...errObj } = err;
+    const validationErrors = parseMongoValidationErrors(errors);
     const error = getDbErr({
       errSrc: "db:user:create",
       errDetails: {
         writeErrors,
-        validationErrors: errors,
+        validationErrors,
         dbError: errObj,
       },
     });

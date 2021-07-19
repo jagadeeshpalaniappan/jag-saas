@@ -1,6 +1,28 @@
 const { getErr } = require("./error");
 
-function handleReqResp(cb) {
+/**
+ * hp: handlePromise
+ * @param {*} promiseFn
+ * @returns
+ */
+function hp(promiseFn) {
+  return new Promise((resolve) => {
+    promiseFn
+      .then((success) => {
+        resolve({ success });
+      })
+      .catch((error) => {
+        resolve({ error });
+      });
+  });
+}
+
+/**
+ * hrr: handleReqResp
+ * @param {*} cb
+ * @returns
+ */
+function hrr(cb) {
   return async function (req, res, next) {
     try {
       console.log(`${req.originalUrl}:try:start`);
@@ -16,5 +38,6 @@ function handleReqResp(cb) {
 }
 
 module.exports = {
-  handleReqResp,
+  hp,
+  hrr,
 };

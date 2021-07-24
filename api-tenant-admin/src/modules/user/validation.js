@@ -32,7 +32,8 @@ function seperateItems(items) {
 function docValidate({ doc, ...rest }) {
   return new Promise((resolve) => {
     doc.validate((dbErr) => {
-      const error = getDbError({ dbErr, ...rest });
+      let error = null;
+      if (dbErr) error = getDbError({ dbErr, ...rest });
       resolve({ doc, error });
     });
   });

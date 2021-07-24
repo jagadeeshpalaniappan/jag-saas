@@ -64,7 +64,7 @@ async function createMany(req) {
   const payload = req.body;
   const createdBy = "TMP-USER1"; // TODO: read loggedIn userId
   const users = payload.map((user) => ({ ...user, createdBy }));
-  const allowPartialSave = !!req.query.allowPartialSave;
+  const allowPartialSave = req.query.allowPartialSave === "true";
 
   // VALIDATE:
   const validnRes = await validation.createMany(users, allowPartialSave);

@@ -96,10 +96,14 @@ async function createMany(req) {
   console.log(validationErrors);
   console.log(doPartialSave);
   console.log(validDocs);
-  if (!doPartialSave && isNotEmpty(validationErrors)) {
+  if (isNotEmpty(validationErrors)) {
     console.log(`${logKey}:createMany:end:validnErr`);
     errors.push(...validationErrors);
-    return { status: 400, error: errors };
+    if (!doPartialSave) {
+      return { status: 400, error: errors };
+    } else {
+      console.log(`${logKey}:createMany:doingPartialSave`);
+    }
   }
 
   // TX:

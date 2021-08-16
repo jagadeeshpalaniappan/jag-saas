@@ -1,10 +1,42 @@
+const { isNotEmpty } = require("./common");
+
+function joiValidateOne(schema, item, index) {
+  const { error } = schema.validate(item);
+  if (error && error.details && error.details.length > 0) {
+    const errors = error.details.map(({ message, type, path, value }) => ({
+      message,
+      type,
+      path,
+      value,
+      index,
+    }));
+    return errors;
+  }
+  return []; // no error
+}
+
+function joiValidateMany(schema, items = []) {
+  const validItems = [];
+  const invalidItems = [];
+  const errors = [];
+
+  items.forEach((item, index) => {
+    const joiErrors = joiValidateOne(schema, item, index);
+    if (isNotEmpty(joiErrors)) {
+      invalidItems.push(item);
+      errors.push(...joiErrors);
+    } else validItems.push(item);
+  });
+  return { validItems, invalidItems, errors };
+}
+
 /*
  "properties": {
-                            "message": "Error, expected `userName` to be unique. Value: `x25`",
-                            "type": "unique",
-                            "path": "userName",
-                            "value": "x25"
-                        },
+    "message": "Error, expected `userName` to be unique. Value: `x25`",
+    "type": "unique",
+    "path": "userName",
+    "value": "x25"
+},
 */
 
 function parseMongoValidationErrors(dbErr) {
@@ -23,5 +55,7 @@ function parseMongoValidationErrors(dbErr) {
 }
 
 module.exports = {
+  joiValidateOne,
+  joiValidateMany,
   parseMongoValidationErrors,
 };

@@ -1,6 +1,7 @@
-const { User } = require("./model");
-const { parseMongoValidationErrors } = require("../common/utils/validation");
+const { isNotEmpty } = require("./common");
+const { parseMongoValidationErrors } = require("./validation");
 
+/*
 function getDbError(dbErr) {
   const errors = [];
   const valdnErrors = parseMongoValidationErrors(dbErr);
@@ -12,14 +13,16 @@ function getDbError(dbErr) {
 
   return errors;
 }
+*/
 
 function docValidate(doc) {
   return new Promise((resolve) => {
     doc.validate((dbErr) => {
       if (dbErr) {
-        resolve(getDbError(dbErr)); // return error
+        const dbErrors = parseMongoValidationErrors(dbErr);
+        resolve(dbErrors); // has-errors
       } else {
-        resolve(); // return null
+        resolve([]); // no-errors
       }
     });
   });
@@ -31,24 +34,13 @@ async function docValidateMany(docs) {
   const errors = [];
 
   for (const doc of docs) {
-    const error = await docValidate(doc);
-    if (error) {
+    const dbErrors = await docValidate(doc);
+    if (isNotEmpty(dbErrors)) {
       invalidDocs.push(doc);
-      errors.push(error);
+      errors.push(...dbErrors);
     } else validDocs.push(doc);
   }
   return { validDocs, invalidDocs, errors };
 }
 
-async function createOne(user) {
-  const userDoc = new User(user);
-  const { doc, error } = await docValidate({ doc: userDoc });
-  console.log({ doc, error });
-  return { doc, error };
-}
-
-async function createMany(userDocs) {
-  return docValidateMany(userDocs);
-}
-
-module.exports = { createOne, createMany };
+module.exports = { docValidate, docValidateMany };

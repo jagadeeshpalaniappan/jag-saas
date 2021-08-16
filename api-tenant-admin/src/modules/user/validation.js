@@ -1,54 +1,44 @@
 const Joi = require("joi");
 const { User } = require("./model");
+const { isNotEmpty } = require("../common/utils");
 const { getValidationErr } = require("../common/utils/error");
-const { parseMongoValidationErrors } = require("../common/utils/validation");
+
+const {
+  docValidate,
+  docValidateMany,
+} = require("../common/utils/dbValidation");
+
+const {
+  joiValidateOne,
+  joiValidateMany,
+} = require("../common/utils/validation");
 
 // POST /api/users
 const create = Joi.object({
-  userName: Joi.string().min(2).max(30).required(),
+  userName: Joi.string().min(3).max(30),
   firstName: Joi.string().min(3).max(30).required(),
   lastName: Joi.string().min(3).max(30).required(),
 });
 
-async function createOne(user) {
-  const userDoc = new User(user);
-  const { doc, error } = await docValidate({ doc: userDoc });
-  console.log({ doc, error });
-  return { doc, error };
+async function createOne({ logKey, payload, doc }) {
+  console.log(`${logKey}:validn:start`);
+  // API-VALIDATION:
+  const apiErrors = joiValidateOne(create, payload);
+  const dbErrors = await docValidate(doc);
+  console.log(`${logKey}:validn:end`);
+  return [...apiErrors, ...dbErrors];
 }
 
-function joiValidateOne(schema, item, index) {
-  const { error } = schema.validate(item);
-  if (error && error.details && error.details.length > 0) {
-    const errors = error.details.map(({ message, type, path, value }) => ({
-      message,
-      type,
-      path,
-      value,
-      index,
-    }));
-    return errors;
-  }
-  return null; // no error
-}
+async function createMany({ logKey, payload, docs }) {
+  console.log(`${logKey}:createMany:validn:start`);
+  // API-VALIDATION:
+  const { errors: apiErrors } = joiValidateMany(create, payload);
 
-function joiValidateMany(schema, items = []) {
-  const validItems = [];
-  const invalidItems = [];
-  const errors = [];
+  // DB-VALIDATION:
+  const { validDocs, errors: dbErrors } = await docValidateMany(docs);
 
-  items.forEach((item, index) => {
-    const joiErrors = joiValidateOne(schema, item, index);
-    if (joiErrors && joiErrors.length > 0) {
-      invalidItems.push(item);
-      errors.push(...joiErrors);
-    } else validItems.push(item);
-  });
-  return { validItems, invalidItems, errors };
-}
-
-function createMany(users) {
-  return joiValidateMany(create, users);
+  console.log(`${logKey}:createMany:validn:end`);
+  return { validationErrors: [...apiErrors, ...dbErrors], validDocs };
 }
 
 module.exports = { create, createOne, createMany };

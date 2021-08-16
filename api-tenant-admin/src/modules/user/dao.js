@@ -35,14 +35,14 @@ async function getAll({ title, limit, skip }) {
  * @property {string} obj.published - The published of user.
  * @returns {Users}
  */
-async function createOne(userDoc) {
-  console.log("db:user:start:create");
+async function createOne({ logKey, doc }) {
+  console.log(`${logKey}::db:start`);
   try {
-    const data = await userDoc.save();
-    console.log("db:user:end:create");
+    const data = await doc.save();
+    console.log(`${logKey}::db:end`);
     return { data };
   } catch (err) {
-    console.log("db:user:err:create");
+    console.log(`${logKey}::db:error`);
     const { insertedDocs, errors, writeErrors, _message, ...errObj } = err;
     const error = getDbErr({
       errSrc: "db:user:create",
@@ -63,14 +63,14 @@ async function createOne(userDoc) {
  * @property {string} obj.published - The published of user.
  * @returns {Users}
  */
-async function createMany(users) {
-  console.log("db:user:start:create");
+async function createMany({ logKey, docs }) {
+  console.log(`${logKey}::db:start`);
   try {
-    const data = await User.insertMany(users);
-    console.log("db:user:end:create");
+    const data = await User.insertMany(docs);
+    console.log(`${logKey}::db:end`);
     return { data };
   } catch (err) {
-    console.log("db:user:err:create");
+    console.log(`${logKey}::db:error`);
     const { insertedDocs, errors, writeErrors, _message, ...errObj } = err;
     const validationErrors = parseMongoValidationErrors(errors);
     const error = getDbErr({

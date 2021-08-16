@@ -1,7 +1,8 @@
 const { User } = require("./model");
 const dao = require("./dao");
-const validation = require("./validation");
-const dbValidn = require("./dbValidation");
+const valdn = require("./validation");
+
+const { isNotEmpty } = require("../common/utils");
 
 /**
  * Get user list.
@@ -33,19 +34,34 @@ async function getAll(req, res, next) {
  * @returns {User}
  */
 async function createOne(req) {
+  const logKey = `${req.baseUrl}::createOne`;
+  console.log(`${logKey}::start`);
+
   // POPULATE:
   const payload = req.body;
-  payload.createdBy = "TMP-USER1"; // TODO: read loggedIn userId
+  const createdBy = "TMP-USER1"; // TODO: read loggedIn userId
+  const doc = new User({ ...payload, createdBy });
 
   // VALIDATE:
-  const { doc, error: validationErr } = await validation.createOne(payload);
-  if (validationErr) return { status: 400, error: validationErr };
+  const validationErrors = await valdn.createOne({
+    logKey,
+    payload,
+    doc,
+  });
+  if (isNotEmpty(validationErrors)) {
+    console.log(`${logKey}:end:validationErr`);
+    return { status: 400, error: validationErrors };
+  }
 
   // TX:
-  const { data, error: dbErr } = await dao.createOne(doc);
-  if (dbErr) return { status: 500, error: dbErr };
+  const { data, error: dbErr } = await dao.createOne({ logKey, doc });
+  if (dbErr) {
+    console.log(`${logKey}::end:dbErr`);
+    return { status: 500, error: dbErr };
+  }
 
   // RESP:
+  console.log(`${logKey}::end`);
   return { status: 201, success: data };
 }
 
@@ -58,42 +74,49 @@ async function createOne(req) {
  * @returns {User}
  */
 async function createMany(req) {
-  const logKey = req.originalUrl;
+  const logKey = req.baseUrl;
   console.log(`${logKey}:createMany:start`);
+  const createdBy = "TMP-USER1"; // TODO: read loggedIn userId
+  const errors = [];
 
   // POPULATE:
-  const users = req.body;
-  const createdBy = "TMP-USER1"; // TODO: read loggedIn userId
+  const payload = req.body;
+  const docs = payload.map((user) => new User({ ...user, createdBy }));
   const allowPartialSave = req.query.allowPartialSave === "true";
 
   // VALIDATE:
-  // API-VALIDATION:
-  const { errors: apiErrors } = validation.createMany(users);
-  console.log(`${logKey}:createMany:end:apiValidation`);
-  console.log(apiErrors);
-  if (apiErrors && apiErrors.length > 0) {
-    console.log(`${logKey}:createMany:end:apiValidation`);
-    return { status: 400, error: apiErrors };
-  }
+  const { validationErrors, validDocs } = await valdn.createMany({
+    logKey,
+    payload,
+    docs,
+  });
 
-  // DB-VALIDATION:
-  const userDocs = users.map((user) => new User({ ...user, createdBy }));
-  const { validDocs, errors: dbErrors } = await dbValidn.createMany(userDocs);
-  if (dbErrors && dbErrors.length > 0) {
-    console.log(`${logKey}:createMany:end:dbValidation`);
-    return { status: 400, error: dbErrors };
+  const doPartialSave = allowPartialSave && isNotEmpty(validDocs);
+  console.log("validationErrors");
+  console.log(validationErrors);
+  console.log(doPartialSave);
+  console.log(validDocs);
+  if (!doPartialSave && isNotEmpty(validationErrors)) {
+    console.log(`${logKey}:createMany:end:validnErr`);
+    errors.push(...validationErrors);
+    return { status: 400, error: errors };
   }
 
   // TX:
-  const { data, error: dbErr } = await dao.createMany(validDocs);
+  const { data, error: dbErr } = await dao.createMany({
+    logKey,
+    docs: validDocs,
+  });
+
   if (dbErr) {
     console.log(`${logKey}:createMany:end:dbErr`);
-    return { status: 500, error: dbErr };
+    errors.push(dbErr);
+    return { status: 500, error: errors };
   }
 
   // RESP:
   console.log(`${logKey}:createMany:end:resp`);
-  return { status: 201, success: data };
+  return { status: 201, success: data, error: errors };
 }
 
 /**

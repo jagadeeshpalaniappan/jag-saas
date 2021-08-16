@@ -2,7 +2,7 @@ const router = require("express").Router();
 const validate = require("express-validation");
 const ctrl = require("./controller");
 const valdn = require("./validation");
-const { hrr } = require("../common/utils/promise");
+const { hrr } = require("../common/utils/express");
 
 router
   .route("/")

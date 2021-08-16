@@ -1,9 +1,9 @@
 const { getErr } = require("./error");
 const { isNotEmpty } = require("./common");
 
-const UNOWN_ERRORS = [
-  { reason: "Something went wrong. Please retry or contact support team." },
-];
+const UNOWN_ERROR = {
+  reason: "Something went wrong. Please retry or contact support team.",
+};
 
 /**
  * hp: handlePromise
@@ -13,11 +13,11 @@ const UNOWN_ERRORS = [
 function hp(promiseFn) {
   return new Promise((resolve) => {
     promiseFn
-      .then((success) => {
-        resolve({ success });
+      .then((data) => {
+        resolve({ ok: true, data });
       })
-      .catch((error) => {
-        resolve({ error });
+      .catch((errors) => {
+        resolve({ ok: false, errors });
       });
   });
 }
@@ -31,16 +31,18 @@ function hrr(cb) {
   return async function (req, res, next) {
     try {
       console.log(`${req.originalUrl}:try:start`);
-      const { status, success, error } = await cb(req, res, next);
-      if (success) {
-        // success:
-        const respBody = { data: success };
-        if (error) respBody.error = error; // partial-success
+      const { status, ok, data, errors } = await cb(req, res, next);
+      if (ok) {
+        // data:
+        const respBody = {};
+        if (data) respBody.data = data; // partial-data
+        if (errors) respBody.errors = errors; // partial-data
         res.status(status || 200).json(respBody);
       }
 
       // error:
-      res.status(status || 500).json({ error: error || UNOWN_ERRORS });
+      if (!isNotEmpty(errors)) errors.push(UNOWN_ERROR);
+      res.status(status || 500).json({ errors });
     } catch (err) {
       console.error(`${req.originalUrl}:catch:error`);
       console.error(err);

@@ -50,19 +50,19 @@ async function createOne(req) {
   });
   if (isNotEmpty(validationErrors)) {
     console.log(`${logKey}:end:validationErr`);
-    return { status: 400, error: validationErrors };
+    return { status: 400, errors: validationErrors };
   }
 
   // TX:
   const { data, error: dbErr } = await dao.createOne({ logKey, doc });
   if (dbErr) {
     console.log(`${logKey}::end:dbErr`);
-    return { status: 500, error: dbErr };
+    return { status: 500, errors: dbErr };
   }
 
   // RESP:
   console.log(`${logKey}::end`);
-  return { status: 201, success: data };
+  return { ok: true, status: 201, data };
 }
 
 /**
@@ -100,7 +100,7 @@ async function createMany(req) {
     console.log(`${logKey}:createMany:end:validnErr`);
     errors.push(...validationErrors);
     if (!doPartialSave) {
-      return { status: 400, error: errors };
+      return { status: 400, errors };
     } else {
       console.log(`${logKey}:createMany:doingPartialSave`);
     }
@@ -115,12 +115,12 @@ async function createMany(req) {
   if (dbErr) {
     console.log(`${logKey}:createMany:end:dbErr`);
     errors.push(dbErr);
-    return { status: 500, error: errors };
+    return { status: 500, errors };
   }
 
   // RESP:
   console.log(`${logKey}:createMany:end:resp`);
-  return { status: 201, success: data, error: errors };
+  return { ok: true, data, errors, status: 201 };
 }
 
 /**

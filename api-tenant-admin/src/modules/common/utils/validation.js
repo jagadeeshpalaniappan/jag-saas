@@ -34,8 +34,6 @@ async function joiValidateOne({ schema, data }) {
     }
     return []; // no error
   }
-
-  const { error } = Joi.validate();
 }
 
 /*

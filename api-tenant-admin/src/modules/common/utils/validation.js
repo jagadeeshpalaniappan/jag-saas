@@ -3,18 +3,18 @@ const { isNotEmpty } = require("./common");
 const { VALIDATION_ERROR } = require("../constants/error");
 const errCode = VALIDATION_ERROR;
 
-function joiValidateOne(schema, item, index) {
-  // const { error } = schema.validate(item);
-  const { error } = Joi.validate(item, schema, {
+function joiValidateOne({ schema, data }) {
+  const { error } = Joi.validate(data, schema, {
     abortEarly: false,
     // stripUnknown: { objects: true },
   });
   if (error && isNotEmpty(error.details)) {
     console.log("######joiValidateOne######");
-    console.log(JSON.stringify(error.details));
+    console.log(JSON.stringify(error));
     const errors = error.details.map(({ message, type, path, context }) => {
       let field = context.key;
       let value = context.value;
+      let index = path.split(".")[0];
       if (type === "array.unique") {
         // special-case: schema.unique("....")
         path = `${path}.${context.path}`;
@@ -22,15 +22,7 @@ function joiValidateOne(schema, item, index) {
         value = context.value[field];
       }
 
-      return {
-        message,
-        type,
-        path,
-        field,
-        value,
-        index,
-        errCode,
-      };
+      return { message, type, path, field, value, index, errCode };
     });
     return errors;
   }

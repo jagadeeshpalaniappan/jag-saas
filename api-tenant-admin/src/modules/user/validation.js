@@ -39,7 +39,7 @@ async function createMany({ logKey, payload, docs }) {
   const { validDocs, errors: dbErrors } = await docValidateMany(docs);
 
   console.log(`${logKey}:end`);
-  return { validationErrors: [...apiErrors, ...dbErrors], validDocs };
+  return { errors: [...apiErrors, ...dbErrors], data: validDocs };
 }
 
 module.exports = { create, createOne, createMany };

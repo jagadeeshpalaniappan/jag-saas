@@ -73,14 +73,14 @@ async function createMany({ logKey, docs }) {
   } catch (err) {
     console.log(`${logKey}:error`);
     const { insertedDocs, errors, writeErrors, _message, ...errObj } = err;
-    const error = getDbErr({
+    const dbErr = getDbErr({
       errSrc: `${logKey}:error`,
       errDetails: {
         writeErrors,
         dbError: errObj,
       },
     });
-    return { data: insertedDocs, error };
+    return { errors: [dbErr], data: insertedDocs };
   }
 }
 

@@ -86,7 +86,7 @@ async function createMany(req) {
   const allowPartialSave = req.query.allowPartialSave === "true";
 
   // VALIDATE:
-  const { validationErrors, validDocs } = await valdn.createMany({
+  const { errors: validationErrors, data: validDocs } = await valdn.createMany({
     logKey,
     payload,
     docs,
@@ -94,7 +94,7 @@ async function createMany(req) {
 
   const doPartialSave = allowPartialSave && isNotEmpty(validDocs);
   if (isNotEmpty(validationErrors)) {
-    console.log(`${logKey}:end:validnErr`);
+    console.log(`${logKey}:end:failed:validnErr`);
     errors.push(...validationErrors);
     if (!doPartialSave) {
       return { status: 400, errors };
@@ -104,14 +104,14 @@ async function createMany(req) {
   }
 
   // TX:
-  const { data, error: dbErr } = await dao.createMany({
+  const { errors: dbErrors, data } = await dao.createMany({
     logKey,
     docs: validDocs,
   });
 
-  if (dbErr) {
-    console.log(`${logKey}:end:dbErr`);
-    errors.push(dbErr);
+  if (isNotEmpty(dbErrors)) {
+    console.log(`${logKey}:end:failed:dbErr`);
+    errors.push(...dbErrors);
     return { status: 500, data, errors };
   }
 

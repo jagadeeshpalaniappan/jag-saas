@@ -20,7 +20,7 @@ async function createMany({ logKey, payload: data, docs }) {
   logKey = `${logKey}::validn`;
   console.log(`${logKey}:start`);
   // API-VALIDATION:
-  const apiErrors = joiValidateOne({ schema: createManySchema, data });
+  const apiErrors = await joiValidateOne({ schema: createManySchema, data });
   // const { errors: apiErrors } = joiValidateMany(createSchema, payload);
 
   // DB-VALIDATION:

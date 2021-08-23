@@ -3,30 +3,42 @@ const { isNotEmpty } = require("./common");
 const { VALIDATION_ERROR } = require("../constants/error");
 const errCode = VALIDATION_ERROR;
 
-function joiValidateOne({ schema, data }) {
-  const { error } = Joi.validate(data, schema, {
-    abortEarly: false,
-    // stripUnknown: { objects: true },
-  });
-  if (error && isNotEmpty(error.details)) {
-    console.log("######joiValidateOne######");
+async function joiValidateOne({ schema, data }) {
+  try {
+    const options = {
+      abortEarly: false,
+      // stripUnknown: { objects: true },
+    };
+    const value = await schema.validateAsync(data, options);
+    console.log("######joiValidateOne######1");
+    console.log(JSON.stringify(value));
+    return []; // no error
+  } catch (error) {
     console.log(JSON.stringify(error));
-    const errors = error.details.map(({ message, type, path, context }) => {
-      let field = context.key;
-      let value = context.value;
-      let index = path.split(".")[0];
-      if (type === "array.unique") {
-        // special-case: schema.unique("....")
-        path = `${path}.${context.path}`;
-        field = context.path;
-        value = context.value[field];
-      }
-
-      return { message, type, path, field, value, index, errCode };
-    });
-    return errors;
+    if (error && isNotEmpty(error.details)) {
+      console.log("######joiValidateOne######3");
+      console.log(JSON.stringify(error));
+      const errors = error.details.map(
+        ({ message, type, path: _path, context }) => {
+          let field = context.key;
+          let value = context.value;
+          let index = _path[0];
+          if (type === "array.unique") {
+            // special-case: schema.unique("....")
+            field = context.path;
+            _path.push(field);
+            value = context.value[field];
+          }
+          const path = _path.join(".");
+          return { message, type, path, field, value, index, errCode };
+        }
+      );
+      return errors;
+    }
+    return []; // no error
   }
-  return []; // no error
+
+  const { error } = Joi.validate();
 }
 
 /*

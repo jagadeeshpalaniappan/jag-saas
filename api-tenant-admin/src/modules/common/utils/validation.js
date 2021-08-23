@@ -12,10 +12,9 @@ async function joiValidateOne({ schema, data }) {
     await schema.validateAsync(data, options);
     return []; // no error
   } catch (error) {
-    console.log(JSON.stringify(error));
     if (error && isNotEmpty(error.details)) {
-      console.log("######joiValidateOne######3");
-      console.log(JSON.stringify(error));
+      console.log("######joiValidateOne######");
+      console.log(JSON.stringify(error.details));
       const errors = error.details.map(
         ({ message, type, path: _path, context }) => {
           let key = context.key;

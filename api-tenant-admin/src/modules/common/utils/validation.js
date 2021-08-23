@@ -9,9 +9,7 @@ async function joiValidateOne({ schema, data }) {
       abortEarly: false,
       // stripUnknown: { objects: true },
     };
-    const value = await schema.validateAsync(data, options);
-    console.log("######joiValidateOne######1");
-    console.log(JSON.stringify(value));
+    await schema.validateAsync(data, options);
     return []; // no error
   } catch (error) {
     console.log(JSON.stringify(error));

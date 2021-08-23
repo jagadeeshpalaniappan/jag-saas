@@ -1,24 +1,43 @@
+const Joi = require("joi");
 const { isNotEmpty } = require("./common");
 const { VALIDATION_ERROR } = require("../constants/error");
-
 const errCode = VALIDATION_ERROR;
 
 function joiValidateOne(schema, item, index) {
-  const { error } = schema.validate(item);
-  if (error && error.details && error.details.length > 0) {
-    const errors = error.details.map(({ message, type, path, value }) => ({
-      message,
-      type,
-      path,
-      value,
-      index,
-      errCode,
-    }));
+  // const { error } = schema.validate(item);
+  const { error } = Joi.validate(item, schema, {
+    abortEarly: false,
+    // stripUnknown: { objects: true },
+  });
+  if (error && isNotEmpty(error.details)) {
+    console.log("######joiValidateOne######");
+    console.log(JSON.stringify(error.details));
+    const errors = error.details.map(({ message, type, path, context }) => {
+      let field = context.key;
+      let value = context.value;
+      if (type === "array.unique") {
+        // special-case: schema.unique("....")
+        path = `${path}.${context.path}`;
+        field = context.path;
+        value = context.value[field];
+      }
+
+      return {
+        message,
+        type,
+        path,
+        field,
+        value,
+        index,
+        errCode,
+      };
+    });
     return errors;
   }
   return []; // no error
 }
 
+/*
 function joiValidateMany(schema, items = []) {
   const validItems = [];
   const invalidItems = [];
@@ -33,6 +52,7 @@ function joiValidateMany(schema, items = []) {
   });
   return { validItems, invalidItems, errors };
 }
+*
 
 /*
  "properties": {
@@ -43,23 +63,6 @@ function joiValidateMany(schema, items = []) {
 },
 */
 
-function parseMongoValidationErrors(dbErr) {
-  if (!dbErr) return null;
-  console.log(JSON.stringify(dbErr.errors));
-  const errors = [];
-  for (const [key, val] of Object.entries(dbErr.errors)) {
-    console.log(JSON.stringify(val));
-    const { message, type, path, value } = val.properties;
-    errors.push({ message, type, path, value, errCode });
-  }
-
-  console.log("JSON.stringify(errors)");
-  console.log(JSON.stringify(errors));
-  return errors;
-}
-
 module.exports = {
   joiValidateOne,
-  joiValidateMany,
-  parseMongoValidationErrors,
 };

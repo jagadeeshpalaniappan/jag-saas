@@ -11,8 +11,10 @@ const createSchema = Joi.object({
   lastName: Joi.string().min(3).max(30).required(),
 });
 
-const createManySchema = Joi.array().min(1).items(createSchema);
-
+const createManySchema = Joi.array()
+  .items(createSchema)
+  .unique("userName", { ignoreUndefined: true })
+  .unique("firstName", { ignoreUndefined: true });
 // #################### MONGOOSE #####################
 
 /**

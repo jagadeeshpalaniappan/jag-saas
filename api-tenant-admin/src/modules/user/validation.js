@@ -5,10 +5,7 @@ const {
   docValidateMany,
 } = require("../common/utils/dbValidation");
 
-const {
-  joiValidateOne,
-  joiValidateMany,
-} = require("../common/utils/validation");
+const { joiValidateOne } = require("../common/utils/validation");
 
 async function createOne({ logKey, payload, doc }) {
   console.log(`${logKey}:validn:start`);
@@ -23,7 +20,8 @@ async function createMany({ logKey, payload, docs }) {
   logKey = `${logKey}::validn`;
   console.log(`${logKey}:start`);
   // API-VALIDATION:
-  const { errors: apiErrors } = joiValidateMany(createSchema, payload);
+  const apiErrors = joiValidateOne(createManySchema, payload);
+  // const { errors: apiErrors } = joiValidateMany(createSchema, payload);
 
   // DB-VALIDATION:
   const { validDocs, errors: dbErrors } = await docValidateMany(docs);

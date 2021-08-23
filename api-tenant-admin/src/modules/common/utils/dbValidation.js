@@ -25,8 +25,7 @@ function parseMongoValidationErrors({ dbErr, index }) {
     console.log(JSON.stringify(val));
     const { message, type, path: _path, value } = val.properties;
     const path = `${index}.${_path}`;
-    const field = key;
-    errors.push({ message, type, path, field, value, index, errCode });
+    errors.push({ message, type, path, key, value, index, errCode });
   }
 
   console.log("JSON.stringify(errors)");

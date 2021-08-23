@@ -1,7 +1,7 @@
 const Joi = require("joi");
 const { isNotEmpty } = require("./common");
-const { VALIDATION_ERROR } = require("../constants/error");
-const errCode = VALIDATION_ERROR;
+const { API_VALIDATION_ERROR } = require("../constants/error");
+const errCode = API_VALIDATION_ERROR;
 
 async function joiValidateOne({ schema, data }) {
   try {
@@ -18,17 +18,17 @@ async function joiValidateOne({ schema, data }) {
       console.log(JSON.stringify(error));
       const errors = error.details.map(
         ({ message, type, path: _path, context }) => {
-          let field = context.key;
+          let key = context.key;
           let value = context.value;
           let index = _path[0];
           if (type === "array.unique") {
             // special-case: schema.unique("....")
-            field = context.path;
-            _path.push(field);
-            value = context.value[field];
+            key = context.path;
+            _path.push(key);
+            value = context.value[key];
           }
           const path = _path.join(".");
-          return { message, type, path, field, value, index, errCode };
+          return { message, type, path, key, value, index, errCode };
         }
       );
       return errors;

@@ -1,7 +1,4 @@
-const Joi = require("joi");
-const { User } = require("./model");
-const { isNotEmpty } = require("../common/utils");
-const { getValidationErr } = require("../common/utils/error");
+const { createSchema, createManySchema } = require("./model");
 
 const {
   docValidate,
@@ -13,17 +10,10 @@ const {
   joiValidateMany,
 } = require("../common/utils/validation");
 
-// POST /api/users
-const create = Joi.object({
-  userName: Joi.string().min(3).max(30),
-  firstName: Joi.string().min(3).max(30).required(),
-  lastName: Joi.string().min(3).max(30).required(),
-});
-
 async function createOne({ logKey, payload, doc }) {
   console.log(`${logKey}:validn:start`);
   // API-VALIDATION:
-  const apiErrors = joiValidateOne(create, payload);
+  const apiErrors = joiValidateOne(createSchema, payload);
   const dbErrors = await docValidate(doc);
   console.log(`${logKey}:validn:end`);
   return [...apiErrors, ...dbErrors];
@@ -33,7 +23,7 @@ async function createMany({ logKey, payload, docs }) {
   logKey = `${logKey}::validn`;
   console.log(`${logKey}:start`);
   // API-VALIDATION:
-  const { errors: apiErrors } = joiValidateMany(create, payload);
+  const { errors: apiErrors } = joiValidateMany(createSchema, payload);
 
   // DB-VALIDATION:
   const { validDocs, errors: dbErrors } = await docValidateMany(docs);
@@ -42,4 +32,4 @@ async function createMany({ logKey, payload, docs }) {
   return { errors: [...apiErrors, ...dbErrors], data: validDocs };
 }
 
-module.exports = { create, createOne, createMany };
+module.exports = { createOne, createMany };

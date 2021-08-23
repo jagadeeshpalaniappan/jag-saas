@@ -1,5 +1,19 @@
 const mongoose = require("mongoose");
 var uniqueValidator = require("mongoose-unique-validator");
+const Joi = require("joi");
+
+// #################### JOI #####################
+
+// POST /api/users
+const createSchema = Joi.object({
+  userName: Joi.string().min(3).max(30),
+  firstName: Joi.string().min(3).max(30).required(),
+  lastName: Joi.string().min(3).max(30).required(),
+});
+
+const createManySchema = Joi.array().min(1).items(createSchema);
+
+// #################### MONGOOSE #####################
 
 /**
  * User Schema
@@ -21,4 +35,4 @@ const UserSchema = new mongoose.Schema(
 const User = mongoose.model("User", UserSchema);
 UserSchema.plugin(uniqueValidator);
 
-module.exports = { UserSchema, User };
+module.exports = { createSchema, createManySchema, UserSchema, User };

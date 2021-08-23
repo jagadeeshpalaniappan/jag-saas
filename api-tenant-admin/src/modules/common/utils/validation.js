@@ -1,4 +1,7 @@
 const { isNotEmpty } = require("./common");
+const { VALIDATION_ERROR } = require("../constants/error");
+
+const errCode = VALIDATION_ERROR;
 
 function joiValidateOne(schema, item, index) {
   const { error } = schema.validate(item);
@@ -9,6 +12,7 @@ function joiValidateOne(schema, item, index) {
       path,
       value,
       index,
+      errCode,
     }));
     return errors;
   }
@@ -46,7 +50,7 @@ function parseMongoValidationErrors(dbErr) {
   for (const [key, val] of Object.entries(dbErr.errors)) {
     console.log(JSON.stringify(val));
     const { message, type, path, value } = val.properties;
-    errors.push({ message, type, path, value });
+    errors.push({ message, type, path, value, errCode });
   }
 
   console.log("JSON.stringify(errors)");

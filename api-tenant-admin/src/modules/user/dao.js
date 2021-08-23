@@ -1,6 +1,7 @@
 const { User } = require("./model");
 const { getDbErr, convertMongoWriteErrors } = require("../common/utils/error");
 const { parseMongoValidationErrors } = require("../common/utils/validation");
+const { DB_ERROR } = require("../common/constants/error");
 const MONGO_DUPLICATE_KEY = 11000;
 /**
  * Get user list.

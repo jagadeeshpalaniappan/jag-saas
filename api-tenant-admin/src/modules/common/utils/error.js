@@ -1,4 +1,5 @@
 const { StatusCodes } = require("http-status-codes");
+const { DB_ERROR } = require("../constants/error");
 
 function getErr({
   httpCode = StatusCodes.INTERNAL_SERVER_ERROR,
@@ -25,7 +26,7 @@ function getErr({
 
 function getDbErr({
   httpCode = StatusCodes.INTERNAL_SERVER_ERROR,
-  errCode = "DB_ERROR",
+  errCode = DB_ERROR,
   errSrc = "DB",
   errReason = "Database execution failed",
   errDetails,
@@ -38,28 +39,6 @@ function getDbErr({
     errReason,
     errDetails: {
       dbError: errObj,
-      ...errDetails,
-    },
-  });
-}
-
-function getValidationErr({
-  httpCode = StatusCodes.BAD_REQUEST,
-  errCode = "VALIDATION_ERROR",
-  errSrc = "API-VALIDATION",
-  errReason = "Validation failed",
-  errDetails,
-  errObj = {},
-  validationErrors,
-}) {
-  return getErr({
-    httpCode,
-    errCode,
-    errSrc,
-    errReason,
-    validationErrors,
-    errDetails: {
-      validationErrors: errObj.errors,
       ...errDetails,
     },
   });
@@ -107,7 +86,6 @@ function errorMiddleware(err, req, res, next) {
 module.exports = {
   getErr,
   getDbErr,
-  getValidationErr,
   errorMiddleware,
   convertMongoWriteErrors,
 };

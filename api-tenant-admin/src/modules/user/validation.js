@@ -30,14 +30,15 @@ async function createOne({ logKey, payload, doc }) {
 }
 
 async function createMany({ logKey, payload, docs }) {
-  console.log(`${logKey}:createMany:validn:start`);
+  logKey = `${logKey}::validn`;
+  console.log(`${logKey}:start`);
   // API-VALIDATION:
   const { errors: apiErrors } = joiValidateMany(create, payload);
 
   // DB-VALIDATION:
   const { validDocs, errors: dbErrors } = await docValidateMany(docs);
 
-  console.log(`${logKey}:createMany:validn:end`);
+  console.log(`${logKey}:end`);
   return { validationErrors: [...apiErrors, ...dbErrors], validDocs };
 }
 

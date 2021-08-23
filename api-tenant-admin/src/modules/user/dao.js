@@ -64,20 +64,19 @@ async function createOne({ logKey, doc }) {
  * @returns {Users}
  */
 async function createMany({ logKey, docs }) {
-  console.log(`${logKey}::db:start`);
+  logKey = `${logKey}::db`;
+  console.log(`${logKey}:start`);
   try {
     const data = await User.insertMany(docs);
-    console.log(`${logKey}::db:end`);
+    console.log(`${logKey}:end`);
     return { data };
   } catch (err) {
-    console.log(`${logKey}::db:error`);
+    console.log(`${logKey}:error`);
     const { insertedDocs, errors, writeErrors, _message, ...errObj } = err;
-    const validationErrors = parseMongoValidationErrors(errors);
     const error = getDbErr({
-      errSrc: "db:user:create",
+      errSrc: `${logKey}:error`,
       errDetails: {
         writeErrors,
-        validationErrors,
         dbError: errObj,
       },
     });

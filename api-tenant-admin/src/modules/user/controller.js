@@ -74,8 +74,9 @@ async function createOne(req) {
  * @returns {User}
  */
 async function createMany(req) {
-  const logKey = req.baseUrl;
-  console.log(`${logKey}:createMany:start`);
+  let logKey = `${req.baseUrl}::createMany`;
+
+  console.log(`${logKey}:start`);
   const createdBy = "TMP-USER1"; // TODO: read loggedIn userId
   const errors = [];
 
@@ -92,17 +93,13 @@ async function createMany(req) {
   });
 
   const doPartialSave = allowPartialSave && isNotEmpty(validDocs);
-  console.log("validationErrors");
-  console.log(validationErrors);
-  console.log(doPartialSave);
-  console.log(validDocs);
   if (isNotEmpty(validationErrors)) {
-    console.log(`${logKey}:createMany:end:validnErr`);
+    console.log(`${logKey}:end:validnErr`);
     errors.push(...validationErrors);
     if (!doPartialSave) {
       return { status: 400, errors };
     } else {
-      console.log(`${logKey}:createMany:doingPartialSave`);
+      console.log(`${logKey}:doingPartialSave`);
     }
   }
 
@@ -113,14 +110,14 @@ async function createMany(req) {
   });
 
   if (dbErr) {
-    console.log(`${logKey}:createMany:end:dbErr`);
+    console.log(`${logKey}:end:dbErr`);
     errors.push(dbErr);
-    return { status: 500, errors };
+    return { status: 500, data, errors };
   }
 
   // RESP:
-  console.log(`${logKey}:createMany:end:resp`);
-  return { ok: true, data, errors, status: 201 };
+  console.log(`${logKey}:end:success`);
+  return { ok: true, status: 201, data, errors };
 }
 
 /**

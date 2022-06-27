@@ -13,7 +13,7 @@ function main() {
     noOfItems: 10,
     filePath: `${dirPrefix}/courses/get/list/student/res.json`,
     meta,
-    idPrefix: "course-",
+    idPrefix: "courseId",
     namePrefix: "Course",
     itemMeta: {
       access: ["READ_COURSE"],
@@ -24,7 +24,7 @@ function main() {
     noOfItems: 10,
     filePath: `${dirPrefix}/courses/get/list/teacher/res.json`,
     meta,
-    idPrefix: "course-",
+    idPrefix: "courseId",
     namePrefix: "Course",
     itemMeta: {
       access: ["READ_COURSE", "UPDATE_COURSE"],
@@ -35,7 +35,7 @@ function main() {
     noOfItems: 10,
     filePath: `${dirPrefix}/courses/get/list/tenantAdmin/res.json`,
     meta,
-    idPrefix: "course-",
+    idPrefix: "courseId",
     namePrefix: "Course",
     itemMeta: {
       access: ["READ_COURSE", "UPDATE_COURSE", "DELETE_COURSE"],

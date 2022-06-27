@@ -13,7 +13,7 @@ function main() {
     noOfItems: 10,
     filePath: `${dirPrefix}/students/get/list/student/res.json`,
     meta,
-    idPrefix: "student-",
+    idPrefix: "studentId",
     namePrefix: "Student",
     itemMeta: {
       access: ["READ_STUDENT"],
@@ -24,7 +24,7 @@ function main() {
     noOfItems: 10,
     filePath: `${dirPrefix}/students/get/list/teacher/res.json`,
     meta,
-    idPrefix: "student-",
+    idPrefix: "studentId",
     namePrefix: "Student",
     itemMeta: {
       access: ["READ_STUDENT", "ASSIGN_COURSE"],
@@ -35,7 +35,7 @@ function main() {
     noOfItems: 10,
     filePath: `${dirPrefix}/students/get/list/tenantAdmin/res.json`,
     meta,
-    idPrefix: "student-",
+    idPrefix: "studentId",
     namePrefix: "Student",
     itemMeta: {
       access: [

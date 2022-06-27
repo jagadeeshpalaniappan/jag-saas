@@ -13,7 +13,7 @@ function main() {
     noOfItems: 10,
     filePath: `${dirPrefix}/userGroups/get/list/teacher/res.json`,
     meta,
-    idPrefix: "userGroup-",
+    idPrefix: "userGroupId",
     namePrefix: "User Group",
     itemMeta: {
       access: ["READ_USER_GROUP"],
@@ -24,7 +24,7 @@ function main() {
     noOfItems: 10,
     filePath: `${dirPrefix}/userGroups/get/list/tenantAdmin/res.json`,
     meta,
-    idPrefix: "userGroup-",
+    idPrefix: "userGroupId",
     namePrefix: "User Group",
     itemMeta: {
       access: ["READ_USER_GROUP", "UPDATE_USER_GROUP", "DELETE_USER_GROUP"],

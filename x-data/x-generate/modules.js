@@ -13,7 +13,7 @@ function main() {
     noOfItems: 10,
     filePath: `${dirPrefix}/modules/get/list/student/res.json`,
     meta,
-    idPrefix: "module-",
+    idPrefix: "moduleId",
     namePrefix: "Module",
     itemMeta: {
       access: ["READ_MODULE"],
@@ -24,7 +24,7 @@ function main() {
     noOfItems: 10,
     filePath: `${dirPrefix}/modules/get/list/teacher/res.json`,
     meta,
-    idPrefix: "module-",
+    idPrefix: "moduleId",
     namePrefix: "Module",
     itemMeta: {
       access: ["READ_MODULE"],
@@ -35,7 +35,7 @@ function main() {
     noOfItems: 10,
     filePath: `${dirPrefix}/modules/get/list/tenantAdmin/res.json`,
     meta,
-    idPrefix: "module-",
+    idPrefix: "moduleId",
     namePrefix: "Module",
     itemMeta: {
       access: ["READ_MODULE", "RENAME_MODULE"],
@@ -46,7 +46,7 @@ function main() {
     noOfItems: 10,
     filePath: `${dirPrefix}/modules/get/list/sysAdmin/res.json`,
     meta,
-    idPrefix: "module-",
+    idPrefix: "moduleId",
     namePrefix: "Module",
     itemMeta: {
       access: ["READ_MODULE", "UPDATE_MODULE", "DELETE_MODULE"],

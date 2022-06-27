@@ -1,14 +1,14 @@
-const { main: generateModules } = require("./modules");
+const { main: generateModules } = require("./views/modules");
 
-const { main: generateUsers } = require("./users");
-const { main: generateUserGroups } = require("./userGroups");
-const { main: generateStudents } = require("./students");
-const { main: generateTeachers } = require("./teachers");
-const { main: generateTenantAdmins } = require("./tenantAdmins");
-const { main: generateSysAdmins } = require("./sysAdmins");
+const { main: generateUsers } = require("./views/users");
+const { main: generateUserGroups } = require("./views/userGroups");
+const { main: generateStudents } = require("./views/students");
+const { main: generateTeachers } = require("./views/teachers");
+const { main: generateTenantAdmins } = require("./views/tenantAdmins");
+const { main: generateSysAdmins } = require("./views/sysAdmins");
 
-const { main: generateCourses } = require("./courses");
-const { main: generateCourseGroups } = require("./courseGroups");
+const { main: generateCourses } = require("./views/courses");
+const { main: generateCourseGroups } = require("./views/courseGroups");
 
 generateModules();
 

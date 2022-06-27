@@ -1,4 +1,4 @@
-const { generateFile, dirPrefix, viewer } = require("./utils");
+const { generateFile, dirPrefix, viewer } = require("../utils");
 
 const meta = {
   pageSize: 10,

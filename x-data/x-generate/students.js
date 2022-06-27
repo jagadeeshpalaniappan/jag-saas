@@ -13,10 +13,13 @@ function main() {
     noOfItems: 10,
     filePath: `${dirPrefix}/students/get/list/student/res.json`,
     meta,
-    idPrefix: "studentId",
-    namePrefix: "Student",
+    idPrefix: "userId",
+    namePrefix: "Student User",
     itemMeta: {
-      access: ["READ_STUDENT"],
+      access: ["READ_USER"],
+    },
+    itemData: {
+      userGroupIds: ["studentUserGroupId1", "userGroupId2", "userGroupId3"],
     },
   });
   // students: (user: teacher)
@@ -24,10 +27,13 @@ function main() {
     noOfItems: 10,
     filePath: `${dirPrefix}/students/get/list/teacher/res.json`,
     meta,
-    idPrefix: "studentId",
-    namePrefix: "Student",
+    idPrefix: "userId",
+    namePrefix: "Student User",
     itemMeta: {
-      access: ["READ_STUDENT", "ASSIGN_COURSE"],
+      access: ["READ_USER", "ASSIGN_COURSE"],
+    },
+    itemData: {
+      userGroupIds: ["studentUserGroupId1", "userGroupId2", "userGroupId3"],
     },
   });
   // students: (user: tenantAdmin)
@@ -35,15 +41,13 @@ function main() {
     noOfItems: 10,
     filePath: `${dirPrefix}/students/get/list/tenantAdmin/res.json`,
     meta,
-    idPrefix: "studentId",
-    namePrefix: "Student",
+    idPrefix: "userId",
+    namePrefix: "Student User",
     itemMeta: {
-      access: [
-        "READ_STUDENT",
-        "UPDATE_STUDENT",
-        "DELETE_STUDENT",
-        "ASSIGN_COURSE",
-      ],
+      access: ["READ_USER", "UPDATE_USER", "DELETE_USER", "ASSIGN_COURSE"],
+    },
+    itemData: {
+      userGroupIds: ["studentUserGroupId1", "userGroupId2", "userGroupId3"],
     },
   });
 }

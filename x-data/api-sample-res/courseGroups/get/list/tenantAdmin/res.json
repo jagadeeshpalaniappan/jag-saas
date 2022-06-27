@@ -1,0 +1,140 @@
+{
+  "data": [
+    {
+      "data": {
+        "id": "courseGroupId1",
+        "name": "Course Group 1"
+      },
+      "meta": {
+        "access": [
+          "READ_COURSE_GROUP",
+          "UPDATE_COURSE_GROUP",
+          "DELETE_COURSE_GROUP"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "courseGroupId2",
+        "name": "Course Group 2"
+      },
+      "meta": {
+        "access": [
+          "READ_COURSE_GROUP",
+          "UPDATE_COURSE_GROUP",
+          "DELETE_COURSE_GROUP"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "courseGroupId3",
+        "name": "Course Group 3"
+      },
+      "meta": {
+        "access": [
+          "READ_COURSE_GROUP",
+          "UPDATE_COURSE_GROUP",
+          "DELETE_COURSE_GROUP"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "courseGroupId4",
+        "name": "Course Group 4"
+      },
+      "meta": {
+        "access": [
+          "READ_COURSE_GROUP",
+          "UPDATE_COURSE_GROUP",
+          "DELETE_COURSE_GROUP"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "courseGroupId5",
+        "name": "Course Group 5"
+      },
+      "meta": {
+        "access": [
+          "READ_COURSE_GROUP",
+          "UPDATE_COURSE_GROUP",
+          "DELETE_COURSE_GROUP"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "courseGroupId6",
+        "name": "Course Group 6"
+      },
+      "meta": {
+        "access": [
+          "READ_COURSE_GROUP",
+          "UPDATE_COURSE_GROUP",
+          "DELETE_COURSE_GROUP"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "courseGroupId7",
+        "name": "Course Group 7"
+      },
+      "meta": {
+        "access": [
+          "READ_COURSE_GROUP",
+          "UPDATE_COURSE_GROUP",
+          "DELETE_COURSE_GROUP"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "courseGroupId8",
+        "name": "Course Group 8"
+      },
+      "meta": {
+        "access": [
+          "READ_COURSE_GROUP",
+          "UPDATE_COURSE_GROUP",
+          "DELETE_COURSE_GROUP"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "courseGroupId9",
+        "name": "Course Group 9"
+      },
+      "meta": {
+        "access": [
+          "READ_COURSE_GROUP",
+          "UPDATE_COURSE_GROUP",
+          "DELETE_COURSE_GROUP"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "courseGroupId10",
+        "name": "Course Group 10"
+      },
+      "meta": {
+        "access": [
+          "READ_COURSE_GROUP",
+          "UPDATE_COURSE_GROUP",
+          "DELETE_COURSE_GROUP"
+        ]
+      }
+    }
+  ],
+  "meta": {
+    "pageSize": 10,
+    "pageNo": 1,
+    "nextPage": "nextPageCursor",
+    "prevPage": "prevPageCursor"
+  }
+}

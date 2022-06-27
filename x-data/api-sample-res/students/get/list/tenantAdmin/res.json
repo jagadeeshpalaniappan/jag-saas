@@ -2,140 +2,190 @@
   "data": [
     {
       "data": {
-        "id": "studentId1",
-        "name": "Student 1"
+        "id": "userId1",
+        "name": "Student User 1",
+        "userGroupIds": [
+          "studentUserGroupId1",
+          "userGroupId2",
+          "userGroupId3"
+        ]
       },
       "meta": {
         "access": [
-          "READ_STUDENT",
-          "UPDATE_STUDENT",
-          "DELETE_STUDENT",
+          "READ_USER",
+          "UPDATE_USER",
+          "DELETE_USER",
           "ASSIGN_COURSE"
         ]
       }
     },
     {
       "data": {
-        "id": "studentId2",
-        "name": "Student 2"
+        "id": "userId2",
+        "name": "Student User 2",
+        "userGroupIds": [
+          "studentUserGroupId1",
+          "userGroupId2",
+          "userGroupId3"
+        ]
       },
       "meta": {
         "access": [
-          "READ_STUDENT",
-          "UPDATE_STUDENT",
-          "DELETE_STUDENT",
+          "READ_USER",
+          "UPDATE_USER",
+          "DELETE_USER",
           "ASSIGN_COURSE"
         ]
       }
     },
     {
       "data": {
-        "id": "studentId3",
-        "name": "Student 3"
+        "id": "userId3",
+        "name": "Student User 3",
+        "userGroupIds": [
+          "studentUserGroupId1",
+          "userGroupId2",
+          "userGroupId3"
+        ]
       },
       "meta": {
         "access": [
-          "READ_STUDENT",
-          "UPDATE_STUDENT",
-          "DELETE_STUDENT",
+          "READ_USER",
+          "UPDATE_USER",
+          "DELETE_USER",
           "ASSIGN_COURSE"
         ]
       }
     },
     {
       "data": {
-        "id": "studentId4",
-        "name": "Student 4"
+        "id": "userId4",
+        "name": "Student User 4",
+        "userGroupIds": [
+          "studentUserGroupId1",
+          "userGroupId2",
+          "userGroupId3"
+        ]
       },
       "meta": {
         "access": [
-          "READ_STUDENT",
-          "UPDATE_STUDENT",
-          "DELETE_STUDENT",
+          "READ_USER",
+          "UPDATE_USER",
+          "DELETE_USER",
           "ASSIGN_COURSE"
         ]
       }
     },
     {
       "data": {
-        "id": "studentId5",
-        "name": "Student 5"
+        "id": "userId5",
+        "name": "Student User 5",
+        "userGroupIds": [
+          "studentUserGroupId1",
+          "userGroupId2",
+          "userGroupId3"
+        ]
       },
       "meta": {
         "access": [
-          "READ_STUDENT",
-          "UPDATE_STUDENT",
-          "DELETE_STUDENT",
+          "READ_USER",
+          "UPDATE_USER",
+          "DELETE_USER",
           "ASSIGN_COURSE"
         ]
       }
     },
     {
       "data": {
-        "id": "studentId6",
-        "name": "Student 6"
+        "id": "userId6",
+        "name": "Student User 6",
+        "userGroupIds": [
+          "studentUserGroupId1",
+          "userGroupId2",
+          "userGroupId3"
+        ]
       },
       "meta": {
         "access": [
-          "READ_STUDENT",
-          "UPDATE_STUDENT",
-          "DELETE_STUDENT",
+          "READ_USER",
+          "UPDATE_USER",
+          "DELETE_USER",
           "ASSIGN_COURSE"
         ]
       }
     },
     {
       "data": {
-        "id": "studentId7",
-        "name": "Student 7"
+        "id": "userId7",
+        "name": "Student User 7",
+        "userGroupIds": [
+          "studentUserGroupId1",
+          "userGroupId2",
+          "userGroupId3"
+        ]
       },
       "meta": {
         "access": [
-          "READ_STUDENT",
-          "UPDATE_STUDENT",
-          "DELETE_STUDENT",
+          "READ_USER",
+          "UPDATE_USER",
+          "DELETE_USER",
           "ASSIGN_COURSE"
         ]
       }
     },
     {
       "data": {
-        "id": "studentId8",
-        "name": "Student 8"
+        "id": "userId8",
+        "name": "Student User 8",
+        "userGroupIds": [
+          "studentUserGroupId1",
+          "userGroupId2",
+          "userGroupId3"
+        ]
       },
       "meta": {
         "access": [
-          "READ_STUDENT",
-          "UPDATE_STUDENT",
-          "DELETE_STUDENT",
+          "READ_USER",
+          "UPDATE_USER",
+          "DELETE_USER",
           "ASSIGN_COURSE"
         ]
       }
     },
     {
       "data": {
-        "id": "studentId9",
-        "name": "Student 9"
+        "id": "userId9",
+        "name": "Student User 9",
+        "userGroupIds": [
+          "studentUserGroupId1",
+          "userGroupId2",
+          "userGroupId3"
+        ]
       },
       "meta": {
         "access": [
-          "READ_STUDENT",
-          "UPDATE_STUDENT",
-          "DELETE_STUDENT",
+          "READ_USER",
+          "UPDATE_USER",
+          "DELETE_USER",
           "ASSIGN_COURSE"
         ]
       }
     },
     {
       "data": {
-        "id": "studentId10",
-        "name": "Student 10"
+        "id": "userId10",
+        "name": "Student User 10",
+        "userGroupIds": [
+          "studentUserGroupId1",
+          "userGroupId2",
+          "userGroupId3"
+        ]
       },
       "meta": {
         "access": [
-          "READ_STUDENT",
-          "UPDATE_STUDENT",
-          "DELETE_STUDENT",
+          "READ_USER",
+          "UPDATE_USER",
+          "DELETE_USER",
           "ASSIGN_COURSE"
         ]
       }

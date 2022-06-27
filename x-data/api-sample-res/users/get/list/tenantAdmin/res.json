@@ -5,9 +5,9 @@
         "id": "userId1",
         "name": "User 1",
         "userGroupIds": [
-          "userGroup-1",
-          "userGroup-2",
-          "userGroup-3"
+          "userGroupId1",
+          "userGroupId2",
+          "userGroupId3"
         ]
       },
       "meta": {
@@ -23,9 +23,9 @@
         "id": "userId2",
         "name": "User 2",
         "userGroupIds": [
-          "userGroup-1",
-          "userGroup-2",
-          "userGroup-3"
+          "userGroupId1",
+          "userGroupId2",
+          "userGroupId3"
         ]
       },
       "meta": {
@@ -41,9 +41,9 @@
         "id": "userId3",
         "name": "User 3",
         "userGroupIds": [
-          "userGroup-1",
-          "userGroup-2",
-          "userGroup-3"
+          "userGroupId1",
+          "userGroupId2",
+          "userGroupId3"
         ]
       },
       "meta": {
@@ -59,9 +59,9 @@
         "id": "userId4",
         "name": "User 4",
         "userGroupIds": [
-          "userGroup-1",
-          "userGroup-2",
-          "userGroup-3"
+          "userGroupId1",
+          "userGroupId2",
+          "userGroupId3"
         ]
       },
       "meta": {
@@ -77,9 +77,9 @@
         "id": "userId5",
         "name": "User 5",
         "userGroupIds": [
-          "userGroup-1",
-          "userGroup-2",
-          "userGroup-3"
+          "userGroupId1",
+          "userGroupId2",
+          "userGroupId3"
         ]
       },
       "meta": {
@@ -95,9 +95,9 @@
         "id": "userId6",
         "name": "User 6",
         "userGroupIds": [
-          "userGroup-1",
-          "userGroup-2",
-          "userGroup-3"
+          "userGroupId1",
+          "userGroupId2",
+          "userGroupId3"
         ]
       },
       "meta": {
@@ -113,9 +113,9 @@
         "id": "userId7",
         "name": "User 7",
         "userGroupIds": [
-          "userGroup-1",
-          "userGroup-2",
-          "userGroup-3"
+          "userGroupId1",
+          "userGroupId2",
+          "userGroupId3"
         ]
       },
       "meta": {
@@ -131,9 +131,9 @@
         "id": "userId8",
         "name": "User 8",
         "userGroupIds": [
-          "userGroup-1",
-          "userGroup-2",
-          "userGroup-3"
+          "userGroupId1",
+          "userGroupId2",
+          "userGroupId3"
         ]
       },
       "meta": {
@@ -149,9 +149,9 @@
         "id": "userId9",
         "name": "User 9",
         "userGroupIds": [
-          "userGroup-1",
-          "userGroup-2",
-          "userGroup-3"
+          "userGroupId1",
+          "userGroupId2",
+          "userGroupId3"
         ]
       },
       "meta": {
@@ -167,9 +167,9 @@
         "id": "userId10",
         "name": "User 10",
         "userGroupIds": [
-          "userGroup-1",
-          "userGroup-2",
-          "userGroup-3"
+          "userGroupId1",
+          "userGroupId2",
+          "userGroupId3"
         ]
       },
       "meta": {

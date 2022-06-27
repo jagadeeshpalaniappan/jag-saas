@@ -3,9 +3,9 @@
     "id": "userId1",
     "name": "User 1",
     "userGroupIds": [
-      "userGroup-1",
-      "userGroup-2",
-      "userGroup-3"
+      "userGroupId1",
+      "userGroupId2",
+      "userGroupId3"
     ]
   },
   "meta": {

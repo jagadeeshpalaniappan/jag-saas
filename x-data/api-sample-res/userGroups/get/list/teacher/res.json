@@ -1,0 +1,120 @@
+{
+  "data": [
+    {
+      "data": {
+        "id": "userGroup-1",
+        "name": "User Group 1"
+      },
+      "meta": {
+        "access": [
+          "READ_USER_GROUP"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "userGroup-2",
+        "name": "User Group 2"
+      },
+      "meta": {
+        "access": [
+          "READ_USER_GROUP"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "userGroup-3",
+        "name": "User Group 3"
+      },
+      "meta": {
+        "access": [
+          "READ_USER_GROUP"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "userGroup-4",
+        "name": "User Group 4"
+      },
+      "meta": {
+        "access": [
+          "READ_USER_GROUP"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "userGroup-5",
+        "name": "User Group 5"
+      },
+      "meta": {
+        "access": [
+          "READ_USER_GROUP"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "userGroup-6",
+        "name": "User Group 6"
+      },
+      "meta": {
+        "access": [
+          "READ_USER_GROUP"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "userGroup-7",
+        "name": "User Group 7"
+      },
+      "meta": {
+        "access": [
+          "READ_USER_GROUP"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "userGroup-8",
+        "name": "User Group 8"
+      },
+      "meta": {
+        "access": [
+          "READ_USER_GROUP"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "userGroup-9",
+        "name": "User Group 9"
+      },
+      "meta": {
+        "access": [
+          "READ_USER_GROUP"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "userGroup-10",
+        "name": "User Group 10"
+      },
+      "meta": {
+        "access": [
+          "READ_USER_GROUP"
+        ]
+      }
+    }
+  ],
+  "meta": {
+    "pageSize": 10,
+    "pageNo": 1,
+    "nextPage": "nextPageCursor",
+    "prevPage": "prevPageCursor"
+  }
+}

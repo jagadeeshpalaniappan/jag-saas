@@ -177,7 +177,7 @@
     "nextPage": "nextPageCursor",
     "prevPage": "prevPageCursor",
     "access": [
-      "CREATE_USER"
+      "CREATE_STUDENT_USER"
     ]
   }
 }

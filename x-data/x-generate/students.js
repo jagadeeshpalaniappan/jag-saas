@@ -30,7 +30,7 @@ function main() {
     filePath: `${dirPrefix}/${viewer.teacherViewer}/students/get/list/res.json`,
     meta: {
       ...meta,
-      access: ["CREATE_USER"],
+      access: ["CREATE_STUDENT_USER"],
     },
     idPrefix: "userId",
     namePrefix: "Student User",

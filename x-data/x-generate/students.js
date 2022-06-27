@@ -10,13 +10,14 @@ const meta = {
 function main() {
   // students: (user: student)
   generateFile({
-    noOfItems: 10,
-    filePath: `${dirPrefix}/students/get/list/student/res.json`,
+    noOfItems: 1,
+    isDetail: true,
+    filePath: `${dirPrefix}/students/get/details/student/res.json`,
     meta,
     idPrefix: "userId",
     namePrefix: "Student User",
     itemMeta: {
-      access: ["READ_USER"],
+      access: ["READ_USER", "UPDATE_USER"],
     },
     itemData: {
       userGroupIds: ["studentUserGroupId1", "userGroupId2", "userGroupId3"],

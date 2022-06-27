@@ -1,0 +1,17 @@
+{
+  "data": {
+    "id": "userId1",
+    "name": "Teacher User 1",
+    "userGroupIds": [
+      "teacherUserGroupId1",
+      "userGroupId2",
+      "userGroupId3"
+    ]
+  },
+  "meta": {
+    "access": [
+      "READ_USER",
+      "UPDATE_USER"
+    ]
+  }
+}

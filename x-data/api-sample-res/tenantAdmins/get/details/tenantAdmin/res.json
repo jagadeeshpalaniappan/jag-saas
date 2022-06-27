@@ -1,0 +1,18 @@
+{
+  "data": {
+    "id": "userId1",
+    "name": "Tenant Admin User 1",
+    "userGroupIds": [
+      "tenantAdminUserGroupId1",
+      "userGroupId2",
+      "userGroupId3"
+    ]
+  },
+  "meta": {
+    "access": [
+      "READ_USER",
+      "UPDATE_USER",
+      "DELETE_USER"
+    ]
+  }
+}

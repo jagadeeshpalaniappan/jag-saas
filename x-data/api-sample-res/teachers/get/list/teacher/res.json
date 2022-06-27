@@ -1,0 +1,170 @@
+{
+  "data": [
+    {
+      "data": {
+        "id": "userId1",
+        "name": "Teacher User 1",
+        "userGroupIds": [
+          "teacherUserGroupId1",
+          "userGroupId2",
+          "userGroupId3"
+        ]
+      },
+      "meta": {
+        "access": [
+          "READ_USER"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "userId2",
+        "name": "Teacher User 2",
+        "userGroupIds": [
+          "teacherUserGroupId1",
+          "userGroupId2",
+          "userGroupId3"
+        ]
+      },
+      "meta": {
+        "access": [
+          "READ_USER"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "userId3",
+        "name": "Teacher User 3",
+        "userGroupIds": [
+          "teacherUserGroupId1",
+          "userGroupId2",
+          "userGroupId3"
+        ]
+      },
+      "meta": {
+        "access": [
+          "READ_USER"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "userId4",
+        "name": "Teacher User 4",
+        "userGroupIds": [
+          "teacherUserGroupId1",
+          "userGroupId2",
+          "userGroupId3"
+        ]
+      },
+      "meta": {
+        "access": [
+          "READ_USER"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "userId5",
+        "name": "Teacher User 5",
+        "userGroupIds": [
+          "teacherUserGroupId1",
+          "userGroupId2",
+          "userGroupId3"
+        ]
+      },
+      "meta": {
+        "access": [
+          "READ_USER"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "userId6",
+        "name": "Teacher User 6",
+        "userGroupIds": [
+          "teacherUserGroupId1",
+          "userGroupId2",
+          "userGroupId3"
+        ]
+      },
+      "meta": {
+        "access": [
+          "READ_USER"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "userId7",
+        "name": "Teacher User 7",
+        "userGroupIds": [
+          "teacherUserGroupId1",
+          "userGroupId2",
+          "userGroupId3"
+        ]
+      },
+      "meta": {
+        "access": [
+          "READ_USER"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "userId8",
+        "name": "Teacher User 8",
+        "userGroupIds": [
+          "teacherUserGroupId1",
+          "userGroupId2",
+          "userGroupId3"
+        ]
+      },
+      "meta": {
+        "access": [
+          "READ_USER"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "userId9",
+        "name": "Teacher User 9",
+        "userGroupIds": [
+          "teacherUserGroupId1",
+          "userGroupId2",
+          "userGroupId3"
+        ]
+      },
+      "meta": {
+        "access": [
+          "READ_USER"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "userId10",
+        "name": "Teacher User 10",
+        "userGroupIds": [
+          "teacherUserGroupId1",
+          "userGroupId2",
+          "userGroupId3"
+        ]
+      },
+      "meta": {
+        "access": [
+          "READ_USER"
+        ]
+      }
+    }
+  ],
+  "meta": {
+    "pageSize": 10,
+    "pageNo": 1,
+    "nextPage": "nextPageCursor",
+    "prevPage": "prevPageCursor"
+  }
+}

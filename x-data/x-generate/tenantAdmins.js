@@ -1,4 +1,4 @@
-const { generateFile, dirPrefix } = require("./utils");
+const { generateFile, dirPrefix, viewer } = require("./utils");
 
 const meta = {
   pageSize: 10,
@@ -12,7 +12,7 @@ function main() {
   generateFile({
     noOfItems: 1,
     isDetail: true,
-    filePath: `${dirPrefix}/tenantAdmins/get/details/tenantAdmin/res.json`,
+    filePath: `${dirPrefix}/${viewer.tenantAdminViewer}/tenantAdmins/get/details/res.json`,
     meta,
     idPrefix: "userId",
     namePrefix: "Tenant Admin User",
@@ -27,7 +27,7 @@ function main() {
   // tenantAdmins:list (user: tenantAdmin)
   generateFile({
     noOfItems: 10,
-    filePath: `${dirPrefix}/tenantAdmins/get/list/tenantAdmin/res.json`,
+    filePath: `${dirPrefix}/${viewer.tenantAdminViewer}/tenantAdmins/get/list/res.json`,
     meta,
     idPrefix: "userId",
     namePrefix: "Tenant Admin User",

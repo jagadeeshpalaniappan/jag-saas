@@ -1,4 +1,4 @@
-const { generateFile, dirPrefix } = require("./utils");
+const { generateFile, dirPrefix, viewer } = require("./utils");
 
 const meta = {
   pageSize: 10,
@@ -11,7 +11,7 @@ function main() {
   // courses: (user: student)
   generateFile({
     noOfItems: 10,
-    filePath: `${dirPrefix}/courses/get/list/student/res.json`,
+    filePath: `${dirPrefix}/${viewer.studentViewer}/courses/get/list/res.json`,
     meta,
     idPrefix: "courseId",
     namePrefix: "Course",
@@ -22,7 +22,7 @@ function main() {
   // courses: (user: teacher)
   generateFile({
     noOfItems: 10,
-    filePath: `${dirPrefix}/courses/get/list/teacher/res.json`,
+    filePath: `${dirPrefix}/${viewer.teacherViewer}/courses/get/list/res.json`,
     meta,
     idPrefix: "courseId",
     namePrefix: "Course",
@@ -33,7 +33,7 @@ function main() {
   // courses: (user: tenantAdmin)
   generateFile({
     noOfItems: 10,
-    filePath: `${dirPrefix}/courses/get/list/tenantAdmin/res.json`,
+    filePath: `${dirPrefix}/${viewer.tenantAdminViewer}/courses/get/list/res.json`,
     meta,
     idPrefix: "courseId",
     namePrefix: "Course",

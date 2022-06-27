@@ -1,4 +1,4 @@
-const { generateFile, dirPrefix } = require("./utils");
+const { generateFile, dirPrefix, viewer } = require("./utils");
 
 const meta = {
   pageSize: 10,
@@ -11,7 +11,7 @@ function main() {
   // modules: (user: student)
   generateFile({
     noOfItems: 10,
-    filePath: `${dirPrefix}/modules/get/list/student/res.json`,
+    filePath: `${dirPrefix}/${viewer.studentViewer}/modules/get/list/res.json`,
     meta,
     idPrefix: "moduleId",
     namePrefix: "Module",
@@ -22,7 +22,7 @@ function main() {
   // modules: (user: teacher)
   generateFile({
     noOfItems: 10,
-    filePath: `${dirPrefix}/modules/get/list/teacher/res.json`,
+    filePath: `${dirPrefix}/${viewer.teacherViewer}/modules/get/list/res.json`,
     meta,
     idPrefix: "moduleId",
     namePrefix: "Module",
@@ -33,7 +33,7 @@ function main() {
   // modules: (user: tenantAdmin)
   generateFile({
     noOfItems: 10,
-    filePath: `${dirPrefix}/modules/get/list/tenantAdmin/res.json`,
+    filePath: `${dirPrefix}/${viewer.tenantAdminViewer}/modules/get/list/res.json`,
     meta,
     idPrefix: "moduleId",
     namePrefix: "Module",
@@ -44,7 +44,7 @@ function main() {
   // modules: (user: sysAdmin)
   generateFile({
     noOfItems: 10,
-    filePath: `${dirPrefix}/modules/get/list/sysAdmin/res.json`,
+    filePath: `${dirPrefix}/${viewer.sysAdminViewer}/modules/get/list/res.json`,
     meta,
     idPrefix: "moduleId",
     namePrefix: "Module",

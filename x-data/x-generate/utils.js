@@ -6,6 +6,12 @@ const mkdirAsync = promisify(fs.mkdir);
 const path = require("path");
 
 const dirPrefix = "../api-sample-res";
+const viewer = {
+  sysAdminViewer: "sysAdminViewer",
+  tenantAdminViewer: "tenantAdminViewer",
+  teacherViewer: "teacherViewer",
+  studentViewer: "studentViewer",
+};
 
 function ensureDirectoryExistence(filePath) {
   var dirname = path.dirname(filePath);
@@ -68,4 +74,5 @@ module.exports = {
   generateData,
   generateFile,
   dirPrefix,
+  viewer,
 };

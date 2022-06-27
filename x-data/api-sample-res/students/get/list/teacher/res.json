@@ -1,0 +1,130 @@
+{
+  "data": [
+    {
+      "data": {
+        "id": "student-1",
+        "name": "Student 1"
+      },
+      "meta": {
+        "access": [
+          "READ_STUDENT",
+          "ASSIGN_COURSE"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "student-2",
+        "name": "Student 2"
+      },
+      "meta": {
+        "access": [
+          "READ_STUDENT",
+          "ASSIGN_COURSE"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "student-3",
+        "name": "Student 3"
+      },
+      "meta": {
+        "access": [
+          "READ_STUDENT",
+          "ASSIGN_COURSE"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "student-4",
+        "name": "Student 4"
+      },
+      "meta": {
+        "access": [
+          "READ_STUDENT",
+          "ASSIGN_COURSE"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "student-5",
+        "name": "Student 5"
+      },
+      "meta": {
+        "access": [
+          "READ_STUDENT",
+          "ASSIGN_COURSE"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "student-6",
+        "name": "Student 6"
+      },
+      "meta": {
+        "access": [
+          "READ_STUDENT",
+          "ASSIGN_COURSE"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "student-7",
+        "name": "Student 7"
+      },
+      "meta": {
+        "access": [
+          "READ_STUDENT",
+          "ASSIGN_COURSE"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "student-8",
+        "name": "Student 8"
+      },
+      "meta": {
+        "access": [
+          "READ_STUDENT",
+          "ASSIGN_COURSE"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "student-9",
+        "name": "Student 9"
+      },
+      "meta": {
+        "access": [
+          "READ_STUDENT",
+          "ASSIGN_COURSE"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "student-10",
+        "name": "Student 10"
+      },
+      "meta": {
+        "access": [
+          "READ_STUDENT",
+          "ASSIGN_COURSE"
+        ]
+      }
+    }
+  ],
+  "meta": {
+    "pageSize": 10,
+    "pageNo": 1,
+    "nextPage": "nextPageCursor",
+    "prevPage": "prevPageCursor"
+  }
+}

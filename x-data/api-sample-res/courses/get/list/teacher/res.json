@@ -1,0 +1,130 @@
+{
+  "data": [
+    {
+      "data": {
+        "id": "course-1",
+        "name": "Course 1"
+      },
+      "meta": {
+        "access": [
+          "READ_COURSE",
+          "UPDATE_COURSE"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "course-2",
+        "name": "Course 2"
+      },
+      "meta": {
+        "access": [
+          "READ_COURSE",
+          "UPDATE_COURSE"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "course-3",
+        "name": "Course 3"
+      },
+      "meta": {
+        "access": [
+          "READ_COURSE",
+          "UPDATE_COURSE"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "course-4",
+        "name": "Course 4"
+      },
+      "meta": {
+        "access": [
+          "READ_COURSE",
+          "UPDATE_COURSE"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "course-5",
+        "name": "Course 5"
+      },
+      "meta": {
+        "access": [
+          "READ_COURSE",
+          "UPDATE_COURSE"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "course-6",
+        "name": "Course 6"
+      },
+      "meta": {
+        "access": [
+          "READ_COURSE",
+          "UPDATE_COURSE"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "course-7",
+        "name": "Course 7"
+      },
+      "meta": {
+        "access": [
+          "READ_COURSE",
+          "UPDATE_COURSE"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "course-8",
+        "name": "Course 8"
+      },
+      "meta": {
+        "access": [
+          "READ_COURSE",
+          "UPDATE_COURSE"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "course-9",
+        "name": "Course 9"
+      },
+      "meta": {
+        "access": [
+          "READ_COURSE",
+          "UPDATE_COURSE"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "course-10",
+        "name": "Course 10"
+      },
+      "meta": {
+        "access": [
+          "READ_COURSE",
+          "UPDATE_COURSE"
+        ]
+      }
+    }
+  ],
+  "meta": {
+    "pageSize": 10,
+    "pageNo": 1,
+    "nextPage": "nextPageCursor",
+    "prevPage": "prevPageCursor"
+  }
+}

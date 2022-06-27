@@ -1,0 +1,140 @@
+{
+  "data": [
+    {
+      "data": {
+        "id": "user-1",
+        "name": "User 1"
+      },
+      "meta": {
+        "access": [
+          "READ_USER",
+          "UPDATE_USER",
+          "DELETE_USER"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "user-2",
+        "name": "User 2"
+      },
+      "meta": {
+        "access": [
+          "READ_USER",
+          "UPDATE_USER",
+          "DELETE_USER"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "user-3",
+        "name": "User 3"
+      },
+      "meta": {
+        "access": [
+          "READ_USER",
+          "UPDATE_USER",
+          "DELETE_USER"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "user-4",
+        "name": "User 4"
+      },
+      "meta": {
+        "access": [
+          "READ_USER",
+          "UPDATE_USER",
+          "DELETE_USER"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "user-5",
+        "name": "User 5"
+      },
+      "meta": {
+        "access": [
+          "READ_USER",
+          "UPDATE_USER",
+          "DELETE_USER"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "user-6",
+        "name": "User 6"
+      },
+      "meta": {
+        "access": [
+          "READ_USER",
+          "UPDATE_USER",
+          "DELETE_USER"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "user-7",
+        "name": "User 7"
+      },
+      "meta": {
+        "access": [
+          "READ_USER",
+          "UPDATE_USER",
+          "DELETE_USER"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "user-8",
+        "name": "User 8"
+      },
+      "meta": {
+        "access": [
+          "READ_USER",
+          "UPDATE_USER",
+          "DELETE_USER"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "user-9",
+        "name": "User 9"
+      },
+      "meta": {
+        "access": [
+          "READ_USER",
+          "UPDATE_USER",
+          "DELETE_USER"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "user-10",
+        "name": "User 10"
+      },
+      "meta": {
+        "access": [
+          "READ_USER",
+          "UPDATE_USER",
+          "DELETE_USER"
+        ]
+      }
+    }
+  ],
+  "meta": {
+    "pageSize": 10,
+    "pageNo": 1,
+    "nextPage": "nextPageCursor",
+    "prevPage": "prevPageCursor"
+  }
+}

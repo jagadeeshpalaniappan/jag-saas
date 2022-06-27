@@ -2,7 +2,7 @@
   "data": [
     {
       "data": {
-        "id": "student-1",
+        "id": "studentId1",
         "name": "Student 1"
       },
       "meta": {
@@ -14,7 +14,7 @@
     },
     {
       "data": {
-        "id": "student-2",
+        "id": "studentId2",
         "name": "Student 2"
       },
       "meta": {
@@ -26,7 +26,7 @@
     },
     {
       "data": {
-        "id": "student-3",
+        "id": "studentId3",
         "name": "Student 3"
       },
       "meta": {
@@ -38,7 +38,7 @@
     },
     {
       "data": {
-        "id": "student-4",
+        "id": "studentId4",
         "name": "Student 4"
       },
       "meta": {
@@ -50,7 +50,7 @@
     },
     {
       "data": {
-        "id": "student-5",
+        "id": "studentId5",
         "name": "Student 5"
       },
       "meta": {
@@ -62,7 +62,7 @@
     },
     {
       "data": {
-        "id": "student-6",
+        "id": "studentId6",
         "name": "Student 6"
       },
       "meta": {
@@ -74,7 +74,7 @@
     },
     {
       "data": {
-        "id": "student-7",
+        "id": "studentId7",
         "name": "Student 7"
       },
       "meta": {
@@ -86,7 +86,7 @@
     },
     {
       "data": {
-        "id": "student-8",
+        "id": "studentId8",
         "name": "Student 8"
       },
       "meta": {
@@ -98,7 +98,7 @@
     },
     {
       "data": {
-        "id": "student-9",
+        "id": "studentId9",
         "name": "Student 9"
       },
       "meta": {
@@ -110,7 +110,7 @@
     },
     {
       "data": {
-        "id": "student-10",
+        "id": "studentId10",
         "name": "Student 10"
       },
       "meta": {

@@ -1,6 +1,6 @@
 {
   "data": {
-    "id": "user-1",
+    "id": "userId1",
     "name": "User 1",
     "userGroupIds": [
       "userGroup-1",

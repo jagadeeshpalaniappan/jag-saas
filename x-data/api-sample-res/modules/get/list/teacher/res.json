@@ -2,7 +2,7 @@
   "data": [
     {
       "data": {
-        "id": "module-1",
+        "id": "moduleId1",
         "name": "Module 1"
       },
       "meta": {
@@ -13,7 +13,7 @@
     },
     {
       "data": {
-        "id": "module-2",
+        "id": "moduleId2",
         "name": "Module 2"
       },
       "meta": {
@@ -24,7 +24,7 @@
     },
     {
       "data": {
-        "id": "module-3",
+        "id": "moduleId3",
         "name": "Module 3"
       },
       "meta": {
@@ -35,7 +35,7 @@
     },
     {
       "data": {
-        "id": "module-4",
+        "id": "moduleId4",
         "name": "Module 4"
       },
       "meta": {
@@ -46,7 +46,7 @@
     },
     {
       "data": {
-        "id": "module-5",
+        "id": "moduleId5",
         "name": "Module 5"
       },
       "meta": {
@@ -57,7 +57,7 @@
     },
     {
       "data": {
-        "id": "module-6",
+        "id": "moduleId6",
         "name": "Module 6"
       },
       "meta": {
@@ -68,7 +68,7 @@
     },
     {
       "data": {
-        "id": "module-7",
+        "id": "moduleId7",
         "name": "Module 7"
       },
       "meta": {
@@ -79,7 +79,7 @@
     },
     {
       "data": {
-        "id": "module-8",
+        "id": "moduleId8",
         "name": "Module 8"
       },
       "meta": {
@@ -90,7 +90,7 @@
     },
     {
       "data": {
-        "id": "module-9",
+        "id": "moduleId9",
         "name": "Module 9"
       },
       "meta": {
@@ -101,7 +101,7 @@
     },
     {
       "data": {
-        "id": "module-10",
+        "id": "moduleId10",
         "name": "Module 10"
       },
       "meta": {

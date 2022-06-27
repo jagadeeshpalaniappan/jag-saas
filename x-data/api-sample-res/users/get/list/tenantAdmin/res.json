@@ -2,7 +2,7 @@
   "data": [
     {
       "data": {
-        "id": "user-1",
+        "id": "userId1",
         "name": "User 1",
         "userGroupIds": [
           "userGroup-1",
@@ -20,7 +20,7 @@
     },
     {
       "data": {
-        "id": "user-2",
+        "id": "userId2",
         "name": "User 2",
         "userGroupIds": [
           "userGroup-1",
@@ -38,7 +38,7 @@
     },
     {
       "data": {
-        "id": "user-3",
+        "id": "userId3",
         "name": "User 3",
         "userGroupIds": [
           "userGroup-1",
@@ -56,7 +56,7 @@
     },
     {
       "data": {
-        "id": "user-4",
+        "id": "userId4",
         "name": "User 4",
         "userGroupIds": [
           "userGroup-1",
@@ -74,7 +74,7 @@
     },
     {
       "data": {
-        "id": "user-5",
+        "id": "userId5",
         "name": "User 5",
         "userGroupIds": [
           "userGroup-1",
@@ -92,7 +92,7 @@
     },
     {
       "data": {
-        "id": "user-6",
+        "id": "userId6",
         "name": "User 6",
         "userGroupIds": [
           "userGroup-1",
@@ -110,7 +110,7 @@
     },
     {
       "data": {
-        "id": "user-7",
+        "id": "userId7",
         "name": "User 7",
         "userGroupIds": [
           "userGroup-1",
@@ -128,7 +128,7 @@
     },
     {
       "data": {
-        "id": "user-8",
+        "id": "userId8",
         "name": "User 8",
         "userGroupIds": [
           "userGroup-1",
@@ -146,7 +146,7 @@
     },
     {
       "data": {
-        "id": "user-9",
+        "id": "userId9",
         "name": "User 9",
         "userGroupIds": [
           "userGroup-1",
@@ -164,7 +164,7 @@
     },
     {
       "data": {
-        "id": "user-10",
+        "id": "userId10",
         "name": "User 10",
         "userGroupIds": [
           "userGroup-1",

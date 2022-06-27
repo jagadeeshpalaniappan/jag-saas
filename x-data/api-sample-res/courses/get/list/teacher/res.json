@@ -2,7 +2,7 @@
   "data": [
     {
       "data": {
-        "id": "course-1",
+        "id": "courseId1",
         "name": "Course 1"
       },
       "meta": {
@@ -14,7 +14,7 @@
     },
     {
       "data": {
-        "id": "course-2",
+        "id": "courseId2",
         "name": "Course 2"
       },
       "meta": {
@@ -26,7 +26,7 @@
     },
     {
       "data": {
-        "id": "course-3",
+        "id": "courseId3",
         "name": "Course 3"
       },
       "meta": {
@@ -38,7 +38,7 @@
     },
     {
       "data": {
-        "id": "course-4",
+        "id": "courseId4",
         "name": "Course 4"
       },
       "meta": {
@@ -50,7 +50,7 @@
     },
     {
       "data": {
-        "id": "course-5",
+        "id": "courseId5",
         "name": "Course 5"
       },
       "meta": {
@@ -62,7 +62,7 @@
     },
     {
       "data": {
-        "id": "course-6",
+        "id": "courseId6",
         "name": "Course 6"
       },
       "meta": {
@@ -74,7 +74,7 @@
     },
     {
       "data": {
-        "id": "course-7",
+        "id": "courseId7",
         "name": "Course 7"
       },
       "meta": {
@@ -86,7 +86,7 @@
     },
     {
       "data": {
-        "id": "course-8",
+        "id": "courseId8",
         "name": "Course 8"
       },
       "meta": {
@@ -98,7 +98,7 @@
     },
     {
       "data": {
-        "id": "course-9",
+        "id": "courseId9",
         "name": "Course 9"
       },
       "meta": {
@@ -110,7 +110,7 @@
     },
     {
       "data": {
-        "id": "course-10",
+        "id": "courseId10",
         "name": "Course 10"
       },
       "meta": {

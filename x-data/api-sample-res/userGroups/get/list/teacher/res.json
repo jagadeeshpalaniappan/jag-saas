@@ -2,7 +2,7 @@
   "data": [
     {
       "data": {
-        "id": "userGroup-1",
+        "id": "userGroupId1",
         "name": "User Group 1"
       },
       "meta": {
@@ -13,7 +13,7 @@
     },
     {
       "data": {
-        "id": "userGroup-2",
+        "id": "userGroupId2",
         "name": "User Group 2"
       },
       "meta": {
@@ -24,7 +24,7 @@
     },
     {
       "data": {
-        "id": "userGroup-3",
+        "id": "userGroupId3",
         "name": "User Group 3"
       },
       "meta": {
@@ -35,7 +35,7 @@
     },
     {
       "data": {
-        "id": "userGroup-4",
+        "id": "userGroupId4",
         "name": "User Group 4"
       },
       "meta": {
@@ -46,7 +46,7 @@
     },
     {
       "data": {
-        "id": "userGroup-5",
+        "id": "userGroupId5",
         "name": "User Group 5"
       },
       "meta": {
@@ -57,7 +57,7 @@
     },
     {
       "data": {
-        "id": "userGroup-6",
+        "id": "userGroupId6",
         "name": "User Group 6"
       },
       "meta": {
@@ -68,7 +68,7 @@
     },
     {
       "data": {
-        "id": "userGroup-7",
+        "id": "userGroupId7",
         "name": "User Group 7"
       },
       "meta": {
@@ -79,7 +79,7 @@
     },
     {
       "data": {
-        "id": "userGroup-8",
+        "id": "userGroupId8",
         "name": "User Group 8"
       },
       "meta": {
@@ -90,7 +90,7 @@
     },
     {
       "data": {
-        "id": "userGroup-9",
+        "id": "userGroupId9",
         "name": "User Group 9"
       },
       "meta": {
@@ -101,7 +101,7 @@
     },
     {
       "data": {
-        "id": "userGroup-10",
+        "id": "userGroupId10",
         "name": "User Group 10"
       },
       "meta": {

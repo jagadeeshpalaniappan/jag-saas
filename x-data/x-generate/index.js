@@ -1,11 +1,11 @@
-const { main: genCourses } = require("./courses");
-const { main: genModules } = require("./modules");
-const { main: genStudents } = require("./students");
-const { main: genUsers } = require("./users");
-const { main: genUserGroups } = require("./userGroups");
+const { main: generateCourses } = require("./courses");
+const { main: generateModules } = require("./modules");
+const { main: generateStudents } = require("./students");
+const { main: generateUsers } = require("./users");
+const { main: generateUserGroups } = require("./userGroups");
 
-genCourses();
-genModules();
-genStudents();
-genUsers();
-genUserGroups();
+generateCourses();
+generateModules();
+generateStudents();
+generateUsers();
+generateUserGroups();

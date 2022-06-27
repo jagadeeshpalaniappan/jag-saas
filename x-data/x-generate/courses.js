@@ -5,6 +5,7 @@ const meta = {
   pageNo: 1,
   nextPage: "nextPageCursor",
   prevPage: "prevPageCursor",
+  access: [],
 };
 
 function main() {
@@ -23,7 +24,10 @@ function main() {
   generateFile({
     noOfItems: 10,
     filePath: `${dirPrefix}/${viewer.teacherViewer}/courses/get/list/res.json`,
-    meta,
+    meta: {
+      ...meta,
+      access: ["CREATE_COURSE"],
+    },
     idPrefix: "courseId",
     namePrefix: "Course",
     itemMeta: {
@@ -34,7 +38,10 @@ function main() {
   generateFile({
     noOfItems: 10,
     filePath: `${dirPrefix}/${viewer.tenantAdminViewer}/courses/get/list/res.json`,
-    meta,
+    meta: {
+      ...meta,
+      access: ["CREATE_COURSE"],
+    },
     idPrefix: "courseId",
     namePrefix: "Course",
     itemMeta: {

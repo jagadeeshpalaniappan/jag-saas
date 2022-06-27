@@ -57,7 +57,10 @@ function main() {
   generateFile({
     noOfItems: 10,
     filePath: `${dirPrefix}/${viewer.tenantAdminViewer}/users/get/list/res.json`,
-    meta,
+    meta: {
+      ...meta,
+      access: ["CREATE_USER"],
+    },
     idPrefix: "userId",
     namePrefix: "User",
     itemMeta: {

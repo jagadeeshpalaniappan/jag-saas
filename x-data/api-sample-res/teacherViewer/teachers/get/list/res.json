@@ -165,6 +165,7 @@
     "pageSize": 10,
     "pageNo": 1,
     "nextPage": "nextPageCursor",
-    "prevPage": "prevPageCursor"
+    "prevPage": "prevPageCursor",
+    "access": []
   }
 }

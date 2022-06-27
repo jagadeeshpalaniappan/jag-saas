@@ -5,6 +5,7 @@ const meta = {
   pageNo: 1,
   nextPage: "nextPageCursor",
   prevPage: "prevPageCursor",
+  access: [],
 };
 
 function main() {
@@ -36,7 +37,10 @@ function main() {
   generateFile({
     noOfItems: 10,
     filePath: `${dirPrefix}/${viewer.tenantAdminViewer}/courseGroups/get/list/res.json`,
-    meta,
+    meta: {
+      ...meta,
+      access: ["CREATE_COURSE_GROUP"],
+    },
     idPrefix: "courseGroupId",
     namePrefix: "Course Group",
     itemMeta: {

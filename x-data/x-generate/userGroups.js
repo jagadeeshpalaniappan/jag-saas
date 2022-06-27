@@ -5,6 +5,7 @@ const meta = {
   pageNo: 1,
   nextPage: "nextPageCursor",
   prevPage: "prevPageCursor",
+  access: [],
 };
 
 function main() {
@@ -23,7 +24,10 @@ function main() {
   generateFile({
     noOfItems: 10,
     filePath: `${dirPrefix}/${viewer.tenantAdminViewer}/userGroups/get/list/res.json`,
-    meta,
+    meta: {
+      ...meta,
+      access: ["CREATE_USER_GROUP"],
+    },
     idPrefix: "userGroupId",
     namePrefix: "User Group",
     itemMeta: {

@@ -3,7 +3,12 @@
     {
       "data": {
         "id": "user-1",
-        "name": "User 1"
+        "name": "User 1",
+        "userGroupIds": [
+          "usergroup-1",
+          "usergroup-2",
+          "usergroup-3"
+        ]
       },
       "meta": {
         "access": [
@@ -16,7 +21,12 @@
     {
       "data": {
         "id": "user-2",
-        "name": "User 2"
+        "name": "User 2",
+        "userGroupIds": [
+          "usergroup-1",
+          "usergroup-2",
+          "usergroup-3"
+        ]
       },
       "meta": {
         "access": [
@@ -29,7 +39,12 @@
     {
       "data": {
         "id": "user-3",
-        "name": "User 3"
+        "name": "User 3",
+        "userGroupIds": [
+          "usergroup-1",
+          "usergroup-2",
+          "usergroup-3"
+        ]
       },
       "meta": {
         "access": [
@@ -42,7 +57,12 @@
     {
       "data": {
         "id": "user-4",
-        "name": "User 4"
+        "name": "User 4",
+        "userGroupIds": [
+          "usergroup-1",
+          "usergroup-2",
+          "usergroup-3"
+        ]
       },
       "meta": {
         "access": [
@@ -55,7 +75,12 @@
     {
       "data": {
         "id": "user-5",
-        "name": "User 5"
+        "name": "User 5",
+        "userGroupIds": [
+          "usergroup-1",
+          "usergroup-2",
+          "usergroup-3"
+        ]
       },
       "meta": {
         "access": [
@@ -68,7 +93,12 @@
     {
       "data": {
         "id": "user-6",
-        "name": "User 6"
+        "name": "User 6",
+        "userGroupIds": [
+          "usergroup-1",
+          "usergroup-2",
+          "usergroup-3"
+        ]
       },
       "meta": {
         "access": [
@@ -81,7 +111,12 @@
     {
       "data": {
         "id": "user-7",
-        "name": "User 7"
+        "name": "User 7",
+        "userGroupIds": [
+          "usergroup-1",
+          "usergroup-2",
+          "usergroup-3"
+        ]
       },
       "meta": {
         "access": [
@@ -94,7 +129,12 @@
     {
       "data": {
         "id": "user-8",
-        "name": "User 8"
+        "name": "User 8",
+        "userGroupIds": [
+          "usergroup-1",
+          "usergroup-2",
+          "usergroup-3"
+        ]
       },
       "meta": {
         "access": [
@@ -107,7 +147,12 @@
     {
       "data": {
         "id": "user-9",
-        "name": "User 9"
+        "name": "User 9",
+        "userGroupIds": [
+          "usergroup-1",
+          "usergroup-2",
+          "usergroup-3"
+        ]
       },
       "meta": {
         "access": [
@@ -120,7 +165,12 @@
     {
       "data": {
         "id": "user-10",
-        "name": "User 10"
+        "name": "User 10",
+        "userGroupIds": [
+          "usergroup-1",
+          "usergroup-2",
+          "usergroup-3"
+        ]
       },
       "meta": {
         "access": [

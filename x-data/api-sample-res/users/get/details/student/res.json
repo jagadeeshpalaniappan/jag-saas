@@ -1,7 +1,12 @@
 {
   "data": {
     "id": "user-1",
-    "name": "User 1"
+    "name": "User 1",
+    "userGroupIds": [
+      "usergroup-1",
+      "usergroup-2",
+      "usergroup-3"
+    ]
   },
   "meta": {
     "access": [

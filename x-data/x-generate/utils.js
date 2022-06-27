@@ -22,10 +22,14 @@ async function createFile(filePath, data) {
   return writeFileAsync(filePath, jsonData);
 }
 
-function generateData(noOfItems, idPrefix, namePrefix, meta) {
+function generateData(noOfItems, idPrefix, namePrefix, itemMeta, itemData) {
   return new Array(noOfItems).fill(0).map((_, i) => ({
-    data: { id: `${idPrefix}${i + 1}`, name: `${namePrefix} ${i + 1}` },
-    meta,
+    data: {
+      id: `${idPrefix}${i + 1}`,
+      name: `${namePrefix} ${i + 1}`,
+      ...itemData,
+    },
+    meta: itemMeta,
   }));
 }
 
@@ -36,10 +40,17 @@ async function generateFile({
   namePrefix,
   meta,
   itemMeta,
+  itemData,
   isDetail,
 }) {
   try {
-    const data = generateData(noOfItems, idPrefix, namePrefix, itemMeta);
+    const data = generateData(
+      noOfItems,
+      idPrefix,
+      namePrefix,
+      itemMeta,
+      itemData
+    );
     let fileData = { data, meta };
     if (isDetail) {
       fileData = data[0];

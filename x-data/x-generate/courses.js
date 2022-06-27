@@ -9,7 +9,7 @@ const meta = {
 };
 
 function main() {
-  // courses: (user: student)
+  // courses: (viewer: student)
   generateFile({
     noOfItems: 10,
     filePath: `${dirPrefix}/${viewer.studentViewer}/courses/get/list/res.json`,
@@ -20,7 +20,7 @@ function main() {
       access: ["READ_COURSE"],
     },
   });
-  // courses: (user: teacher)
+  // courses: (viewer: teacher)
   generateFile({
     noOfItems: 10,
     filePath: `${dirPrefix}/${viewer.teacherViewer}/courses/get/list/res.json`,
@@ -34,7 +34,7 @@ function main() {
       access: ["READ_COURSE", "UPDATE_COURSE"],
     },
   });
-  // courses: (user: tenantAdmin)
+  // courses: (viewer: tenantAdmin)
   generateFile({
     noOfItems: 10,
     filePath: `${dirPrefix}/${viewer.tenantAdminViewer}/courses/get/list/res.json`,

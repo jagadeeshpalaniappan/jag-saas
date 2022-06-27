@@ -9,7 +9,7 @@ const meta = {
 };
 
 function main() {
-  // teachers:list (user: student)
+  // teachers:list (viewer: student)
   generateFile({
     noOfItems: 10,
     filePath: `${dirPrefix}/${viewer.studentViewer}/teachers/get/list/res.json`,
@@ -24,7 +24,7 @@ function main() {
     },
   });
 
-  // teachers:details (user: teacher)
+  // teachers:details (viewer: teacher)
   generateFile({
     noOfItems: 1,
     isDetail: true,
@@ -40,7 +40,7 @@ function main() {
     },
   });
 
-  // teachers:list (user: teacher)
+  // teachers:list (viewer: teacher)
   generateFile({
     noOfItems: 10,
     filePath: `${dirPrefix}/${viewer.teacherViewer}/teachers/get/list/res.json`,
@@ -55,7 +55,7 @@ function main() {
     },
   });
 
-  // teachers: (user: tenantAdmin)
+  // teachers: (viewer: tenantAdmin)
   generateFile({
     noOfItems: 10,
     filePath: `${dirPrefix}/${viewer.tenantAdminViewer}/teachers/get/list/res.json`,

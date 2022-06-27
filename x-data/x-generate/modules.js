@@ -9,7 +9,7 @@ const meta = {
 };
 
 function main() {
-  // modules: (user: student)
+  // modules: (viewer: student)
   generateFile({
     noOfItems: 10,
     filePath: `${dirPrefix}/${viewer.studentViewer}/modules/get/list/res.json`,
@@ -20,7 +20,7 @@ function main() {
       access: ["READ_MODULE"],
     },
   });
-  // modules: (user: teacher)
+  // modules: (viewer: teacher)
   generateFile({
     noOfItems: 10,
     filePath: `${dirPrefix}/${viewer.teacherViewer}/modules/get/list/res.json`,
@@ -31,7 +31,7 @@ function main() {
       access: ["READ_MODULE"],
     },
   });
-  // modules: (user: tenantAdmin)
+  // modules: (viewer: tenantAdmin)
   generateFile({
     noOfItems: 10,
     filePath: `${dirPrefix}/${viewer.tenantAdminViewer}/modules/get/list/res.json`,
@@ -42,7 +42,7 @@ function main() {
       access: ["READ_MODULE", "RENAME_MODULE"],
     },
   });
-  // modules: (user: sysAdmin)
+  // modules: (viewer: sysAdmin)
   generateFile({
     noOfItems: 10,
     filePath: `${dirPrefix}/${viewer.sysAdminViewer}/modules/get/list/res.json`,

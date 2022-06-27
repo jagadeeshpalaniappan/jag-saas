@@ -9,7 +9,7 @@ const meta = {
 };
 
 function main() {
-  // userGroups: (user: teacher)
+  // userGroups: (viewer: teacher)
   generateFile({
     noOfItems: 10,
     filePath: `${dirPrefix}/${viewer.teacherViewer}/userGroups/get/list/res.json`,
@@ -20,7 +20,7 @@ function main() {
       access: ["READ_USER_GROUP"],
     },
   });
-  // userGroups: (user: tenantAdmin)
+  // userGroups: (viewer: tenantAdmin)
   generateFile({
     noOfItems: 10,
     filePath: `${dirPrefix}/${viewer.tenantAdminViewer}/userGroups/get/list/res.json`,

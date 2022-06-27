@@ -9,7 +9,7 @@ const meta = {
 };
 
 function main() {
-  // students: (user: student)
+  // students:details (viewer: student)
   generateFile({
     noOfItems: 1,
     isDetail: true,
@@ -24,7 +24,7 @@ function main() {
       userGroupIds: ["studentUserGroupId1", "userGroupId2", "userGroupId3"],
     },
   });
-  // students: (user: teacher)
+  // students: (viewer: teacher)
   generateFile({
     noOfItems: 10,
     filePath: `${dirPrefix}/${viewer.teacherViewer}/students/get/list/res.json`,
@@ -41,7 +41,7 @@ function main() {
       userGroupIds: ["studentUserGroupId1", "userGroupId2", "userGroupId3"],
     },
   });
-  // students: (user: tenantAdmin)
+  // students: (viewer: tenantAdmin)
   generateFile({
     noOfItems: 10,
     filePath: `${dirPrefix}/${viewer.tenantAdminViewer}/students/get/list/res.json`,

@@ -9,7 +9,7 @@ const meta = {
 };
 
 function main() {
-  // tenantAdmins:details (user: tenantAdmin)
+  // tenantAdmins:details (viewer: tenantAdmin)
   generateFile({
     noOfItems: 1,
     isDetail: true,
@@ -25,7 +25,7 @@ function main() {
     },
   });
 
-  // tenantAdmins:list (user: tenantAdmin)
+  // tenantAdmins:list (viewer: tenantAdmin)
   generateFile({
     noOfItems: 10,
     filePath: `${dirPrefix}/${viewer.tenantAdminViewer}/tenantAdmins/get/list/res.json`,

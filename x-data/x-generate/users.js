@@ -8,7 +8,7 @@ const meta = {
 };
 
 function main() {
-  // users: (user: student)
+  // users:details (viewer: student)
   generateFile({
     noOfItems: 1,
     isDetail: true,
@@ -23,7 +23,7 @@ function main() {
     },
   });
 
-  // users: (user: teacher)
+  // users:details (viewer: teacher)
   generateFile({
     noOfItems: 1,
     isDetail: true,
@@ -38,7 +38,7 @@ function main() {
     },
   });
 
-  // users: (user: tenantAdmin)
+  // users:details (viewer: tenantAdmin)
   generateFile({
     noOfItems: 1,
     isDetail: true,
@@ -53,7 +53,7 @@ function main() {
     },
   });
 
-  // users: (user: tenantAdmin)
+  // users: (viewer: tenantAdmin)
   generateFile({
     noOfItems: 10,
     filePath: `${dirPrefix}/${viewer.tenantAdminViewer}/users/get/list/res.json`,

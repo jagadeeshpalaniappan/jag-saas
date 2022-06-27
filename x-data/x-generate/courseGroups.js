@@ -9,7 +9,7 @@ const meta = {
 };
 
 function main() {
-  // courseGroups: (user: student)
+  // courseGroups: (viewer: student)
   generateFile({
     noOfItems: 10,
     filePath: `${dirPrefix}/${viewer.studentViewer}/courseGroups/get/list/res.json`,
@@ -21,7 +21,7 @@ function main() {
     },
   });
 
-  // courseGroups: (user: teacher)
+  // courseGroups: (viewer: teacher)
   generateFile({
     noOfItems: 10,
     filePath: `${dirPrefix}/${viewer.teacherViewer}/courseGroups/get/list/res.json`,
@@ -33,7 +33,7 @@ function main() {
     },
   });
 
-  // courseGroups: (user: tenantAdmin)
+  // courseGroups: (viewer: tenantAdmin)
   generateFile({
     noOfItems: 10,
     filePath: `${dirPrefix}/${viewer.tenantAdminViewer}/courseGroups/get/list/res.json`,

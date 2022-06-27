@@ -19,7 +19,7 @@ function main() {
       access: ["READ_USER", "UPDATE_USER"],
     },
     itemData: {
-      userGroupIds: ["userGroup-1", "userGroup-2", "userGroup-3"],
+      userGroupIds: ["userGroupId1", "userGroupId2", "userGroupId3"],
     },
   });
 
@@ -34,7 +34,7 @@ function main() {
       access: ["READ_USER", "UPDATE_USER"],
     },
     itemData: {
-      userGroupIds: ["userGroup-1", "userGroup-2", "userGroup-3"],
+      userGroupIds: ["userGroupId1", "userGroupId2", "userGroupId3"],
     },
   });
 
@@ -49,7 +49,7 @@ function main() {
       access: ["READ_USER", "UPDATE_USER", "DELETE_USER"],
     },
     itemData: {
-      userGroupIds: ["userGroup-1", "userGroup-2", "userGroup-3"],
+      userGroupIds: ["userGroupId1", "userGroupId2", "userGroupId3"],
     },
   });
 
@@ -64,7 +64,7 @@ function main() {
       access: ["READ_USER", "UPDATE_USER", "DELETE_USER"],
     },
     itemData: {
-      userGroupIds: ["userGroup-1", "userGroup-2", "userGroup-3"],
+      userGroupIds: ["userGroupId1", "userGroupId2", "userGroupId3"],
     },
   });
 }

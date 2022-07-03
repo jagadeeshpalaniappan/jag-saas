@@ -8,6 +8,6 @@ router
   /** GET /api/courses - Get list of courses */
   .get(ctrl.getAll)
   /** POST /api/courses - Create new course */
-  .post(validate(valdn.createCourse), ctrl.create);
+  .post(validate(valdn.create), ctrl.create);
 
 module.exports = router;

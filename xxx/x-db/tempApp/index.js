@@ -1,0 +1,1 @@
+require("./src/courses/index");
